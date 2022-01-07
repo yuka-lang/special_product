@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  introduction: MyText
+  word: MyText
+  profile_image_url: MyString
+  prefectures: MyString
+  season: MyString
+
+two:
+  title: MyString
+  introduction: MyText
+  word: MyText
+  profile_image_url: MyString
+  prefectures: MyString
+  season: MyString
