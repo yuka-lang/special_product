@@ -1,2 +1,13 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h2>プロフィール編集</h2>
+<%= form_with model:@user, local:true do |f| %>
+  <label for="inputName">Name</label>
+  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
+  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+   <label for="inputImage">プロフィール画像</label>
+   <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+  <P>紹介文：<%= f.text_area :introduction, autofocus: true %></P>
+
+  <div><%= f.submit "変更を保存" %></div>
+<% end %>
+
+  <div><%= link_to "詳細に戻る",user_path(@user.id) %></div>

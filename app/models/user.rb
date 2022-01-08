@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # 投稿用のアソシエーション
   has_many :posts, dependent: :destroy
 
   # コメント機能のアソシエーション
@@ -18,5 +19,8 @@ class User < ApplicationRecord
 
   # いいね機能のアソシエーション
   has_many :favorites, dependent: :destroy
+
+  # プロフィール画像投稿用
+  attachment :profile_image
 
 end

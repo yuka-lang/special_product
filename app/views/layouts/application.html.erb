@@ -17,7 +17,9 @@
            <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
-                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn btn-danger"%></li>
+                <li><%= link_to 'マイページ', user_path(current_user.id), class: "btn btn-danger m-2 rounded nav-item" %></li>
+                <li><%= link_to 'TOP', posts_path, class: "btn btn-danger m-2 rounded nav-item" %></li>
+                <li><%= link_to '会員一覧', users_path, class: "btn btn-danger m-2 rounded nav-item" %></li>
               <% else %>
                 <li><%= link_to "新規登録", new_user_registration_path, class: "btn btn-danger m-2 rounded nav-item" %></li>
                 <li><%= link_to "ログイン", new_user_session_path, class: "btn btn-danger m-2 rounded nav-item" %></li>
@@ -29,7 +31,7 @@
     </header>
 
     <%= yield %>
-    
+
     <footer>
       <div class="mt-5" style="border-top: 1px solid black; text-align: center; font-size: 25px; font-family: cursive;">footer</div>
     </footer>
