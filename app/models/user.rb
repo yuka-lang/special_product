@@ -4,8 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  # コメント機能のアソシエーション
   has_many :posts, dependent: :destroy
+
+  # コメント機能のアソシエーション
   has_many :comments, dependent: :destroy
 
   # DM機能のアソシエーション

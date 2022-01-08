@@ -1,2 +1,13 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<h2>投稿詳細画面</h2>
+
+<div>
+  <%= attachment_image_tag @post, :image %>
+  <p>タイトル：<%= @post.title %></p>
+  <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+  <p>都道府県：<%= @post.prefectures %></p>
+  <p>紹介文 : <%= @post.introduction %></p>
+  <p>投稿者からの一言！: <%= @post.word %></p>
+  <% if @post.user == current_user %>
+    <%= link_to "削除", post_path(@post), method: :delete %>
+  <% end %>
+</div>

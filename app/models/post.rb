@@ -1,7 +1,11 @@
 class Post < ApplicationRecord
 
-  # コメント機能のアソシエーション
   belongs_to :user
+
+  # 画像投稿用
+  attachment :image
+
+  # コメント機能のアソシエーション
   has_many :comments, dependent: :destroy
 
   # タグ機能のアソシエーション

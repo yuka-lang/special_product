@@ -1,2 +1,9 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<h1>投稿一覧画面（トップページ）</h1>
+<% @posts.each do |post| %>
+<div>
+  <%= link_to post_path(post.id) do %>
+    <%= attachment_image_tag post, :image %>
+  <% end %>
+  <p>タイトル：<%= post.title %></p>
+</div>
+<% end %>
