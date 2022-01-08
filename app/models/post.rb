@@ -18,6 +18,13 @@ class Post < ApplicationRecord
   # いいね機能のアソシエーション
   has_many :favorites, dependent: :destroy
 
+  # 投稿のバリデーション
+  validates :image, presence: true
+  validates :title, presence: true
+  validates :prefectures, presence: true
+  validates :season, presence: true
+  validates :introduction, presence: true
+  validates :word, presence: true
 
   # すでにブックマーク登録済みかを判定
   def bookmarked_by?(user)

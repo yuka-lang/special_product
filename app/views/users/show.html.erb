@@ -10,7 +10,7 @@
   <% end %>
 </div>
 
-<h1>私の投稿一覧</h1>
+<h1><%= @user.name %>さんの投稿一覧</h1>
 <% @posts.each do |post| %>
   <div>
     <%= link_to post_path(post.id) do %>

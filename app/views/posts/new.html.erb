@@ -1,5 +1,5 @@
-
 <%= form_with model:@post, local:true do |f| %>
+<%= render 'layouts/error_messages', model: f.object %>
 
 <h4>投稿画像</h4>
 <%= f.attachment_field :image %>

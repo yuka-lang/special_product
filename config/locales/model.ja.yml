@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      post: 投稿
+    attributes:
+      post:
+        image: 投稿画像
+        title: タイトル
+        season: おすすめ季節
+        introduction: 紹介文
+        word: ひと言文
+        prefectures: 都道府県
