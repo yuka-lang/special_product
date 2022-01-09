@@ -1,13 +1,37 @@
-<h2>プロフィール編集</h2>
-<%= form_with model:@user, local:true do |f| %>
-  <label for="inputName">Name</label>
-  <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
-  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
-   <label for="inputImage">プロフィール画像</label>
-   <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
-  <P>紹介文：<%= f.text_area :introduction, autofocus: true %></P>
+<div class="container">
+  <div class="row py-3">
+    <div  class="col-3 offset-1 text-center">
+      <h3 class="d-inline-flex px-2 pt-2 bd-highlight">プロフィール編集</h3>
+    </div>
+  </div>
 
-  <div><%= f.submit "変更を保存" %></div>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
 
-  <div><%= link_to "詳細に戻る",user_path(@user.id) %></div>
+      <%= form_with model:@user, local:true do |f| %>
+
+        <div class="row form-group pt-3">
+          <div class="col-4">名前</div>
+          <div><%= f.text_field :name, class:"form-control" %></div>
+        </div>
+
+        <div class="row form-group pt-3">
+          <div class="col-4">プロフィール画像</div>
+          <div><%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%></div>
+          <div><%= f.attachment_field :profile_image %></div>
+        </div>
+
+        <div class="row form-group pt-3">
+          <div class="col-4">紹介文</div>
+          <div><%= f.text_area :introduction, :size=>"50x10", class:"form-control"  %></div>
+        </div>
+
+        <div><%= f.submit "変更を保存" %></div>
+      <% end %>
+
+        <div><%= link_to "詳細に戻る",user_path(@user.id) %></div>
+
+    </div>
+  </div>
+</div>

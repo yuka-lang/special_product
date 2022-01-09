@@ -1,15 +1,26 @@
-<h2>投稿詳細画面</h2>
+<div class="container py-3">
+ <div class="row pb-4">
+    <div class="col-md-2 offset-1 p-3 text-center">
+      <h5 class="d-inline-flex pt-2 bd-highlight">投稿詳細</h5>
+    </div>
+  </div>
 
-<div>
-  <%= attachment_image_tag @post, :image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-  <p>タイトル：<%= @post.title %></p>
-  <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-  <p>都道府県：<%= @post.prefectures %></p>
-  <p>紹介文 : <%= @post.introduction %></p>
-  <p>投稿者からのひと言: <%= @post.word %></p>
-  <% if @post.user == current_user %>
-    <%= link_to "編集", edit_post_path(@post) %>
-    <%= link_to "削除", post_path(@post), method: :delete %>
-  <% end %>
-  <p><%= link_to "一覧に戻る", posts_path %></p>
+  <div class="row">
+    <div class="col-9 mx-auto text-center">
+      <p>タイトル：<%= @post.title %></p>
+      <p class="text-start">投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+      <%= attachment_image_tag @post, :image, :fill, 530, 350, format: 'jpeg', fallback: "no_image.jpg" %>
+      <p>都道府県：<%= @post.prefectures %></p>
+      <p>紹介文 : <%= @post.introduction %></p>
+      <p>投稿者からのひと言: <%= @post.word %></p>
+      <% if @post.user == current_user %>
+        <%= link_to "編集", edit_post_path(@post) %>
+        <%= link_to "削除", post_path(@post), method: :delete %>
+      <% end %>
+      <p><%= link_to "一覧に戻る", posts_path %></p>
+    </div>
+    <div class="col-3">
+      <h4>タグおすすめ</h4>
+    </div>
+  </div>
 </div>

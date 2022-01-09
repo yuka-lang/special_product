@@ -1,10 +1,12 @@
 <div class="main-visual">
-    <h1 class="text-center p-4">text</h1>
+    <h1 class="text-center p-4">特産物シェアサイト</h1>
     <p>...</p>
 </div>
 
 <div class="container">
   <div class="row">
+    <div class="col-9 mx-auto text-center">
+    <h4 class="pt-5">投稿一覧</h4>
       <% @posts.each do |post| %>
       <div class="col">
         <div class="card" style="width: 18rem;">
@@ -17,5 +19,9 @@
         </div>
         </div>
       <% end %>
+    </div>
+    <div class="col-3">
+      <h4>サイドバー</h4>
+    </div>
   </div>
 </div>
