@@ -18,9 +18,37 @@
         <%= link_to "削除", post_path(@post), method: :delete %>
       <% end %>
       <p><%= link_to "一覧に戻る", posts_path %></p>
-    </div>
-    <div class="col-3">
-      <h4>タグおすすめ</h4>
+
+
+
+    <!--コメント機能-->
+      <div class="col-4">
+        <p>コメント件数：<%= @post.comments.count %></p>
+
+        <!--コメントの内容を表示-->
+        <% @post.comments.each do |comment| %>
+          <p><%= attachment_image_tag comment.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></p>
+          <%= comment.user.name %>
+          <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment_content %>
+          <% if comment.user == current_user %>
+            <div>
+              <%= link_to "削除", post_comment_path(comment.post, comment), method: :delete %>
+            </div>
+          <% end %>
+        <% end %>
+
+      <p class="col-5">
+        <%= form_with(model:[@post, @comment], local: true) do |f| %>
+          <%= f.text_area :comment_content, :size=>"60x5", class:"form-control", rows:'5',placeholder: "コメント記入欄" %>
+          <%= f.submit "送信する" %>
+        <% end %>
+      </p>
     </div>
   </div>
+
+  <div class="col-3">
+    <h4>タグおすすめ</h4>
+  </div>
+
+ </div>
 </div>

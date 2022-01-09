@@ -14,8 +14,10 @@
             <% end %>
           </p>
           <p class="card-title">タイトル：<%= post.title %></p>
+          <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p>
         </div>
         </div>
       <% end %>
   </div>
 </div>
+
