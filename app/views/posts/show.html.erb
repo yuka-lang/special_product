@@ -4,7 +4,7 @@
       <h5 class="d-inline-flex pt-2 bd-highlight">投稿詳細</h5>
     </div>
   </div>
-  
+
   <div class="row">
     <div class="col-9 mx-auto text-center">
       <p>タイトル：<%= @post.title %></p>
@@ -19,26 +19,32 @@
       <% end %>
       <p><%= link_to "一覧に戻る", posts_path %></p>
 
-      <!--いいね機能の部分テンプレート-->
-      <div id="favorites_buttons_<%= @post.id %>">
-  　　  　<%= render "favorites/favorite", post: @post %>
-  　　  </div>
+      <% if user_signed_in? %>
+        <!--いいね機能の部分テンプレート-->
+        <div id="favorites_buttons_<%= @post.id %>">
+    　　  　<%= render "favorites/favorite", post: @post %>
+    　　  </div>
 
-      <!--ここからコメント機能-->
-      <div class="col-4">
+        <!--ここからコメント機能-->
+        <div class="col-4">
+            <p>コメント件数：<%= @post.comments.count %></p>
+          <!--コメントの内容の部分テンプレート-->
+          <div id="comments_area">
+            <%= render "comments/comment", post: @post %>
+          </div>
+          <!--コメントフォームの部分テンプレート-->
+          <p class="col-5">
+           <%= render "comments/form", post: @post, comment: @comment %>
+          </p>
+        </div>
+      <% else %>
+        <p>美味しそう!:<%= @post.favorites.count %></p>
         <p>コメント件数：<%= @post.comments.count %></p>
-      <!--コメントの内容の部分テンプレート-->
-      <div id="comments_area">
-        <%= render "comments/comment", post: @post %>
-      </div>
-      <!--コメントフォームの部分テンプレート-->
-      <p class="col-5">
-       <%= render "comments/form", post: @post, comment: @comment %>
-      </p>
+      <% end %>
     </div>
-  </div>
-  
-  <div class="col-3">
-    <h4>タグおすすめ</h4>
+
+    <div class="col-3">
+      <h4>タグおすすめ</h4>
+    </div>
   </div>
 </div>
