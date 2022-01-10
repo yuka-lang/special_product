@@ -1,0 +1,2 @@
+// #favorites_buttons_<%= @post.id %>
+$('#bookmark_button_<%= @post.id %>').html("<%= j(render partial: 'bookmarks/bookmark', locals: {post: @post}) %>")
