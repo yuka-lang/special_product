@@ -1,17 +1,8 @@
 <div class= 'container'>
   <div class= 'row'>
-
     <div class = 'col-md-3'>
-      プロフィール画像：<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
-      <p>名前:<%= @user.name %></p>
-      <p>紹介文：<%= @user.introduction %></p>
-      <% if @user.id == current_user.id %>
-        <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-        <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
-        <p><%= link_to "新規投稿", new_post_path(@user) %></p>
-      <% end %>
+      <%= render "users/user", user: @user %>
     </div>
-
     <div class='col-md-8 offset-md-1'>
       <h4>会員一覧</h4>
         <% @users.each do |user| %>
@@ -19,11 +10,12 @@
           <%= link_to user_path(user.id) do %>
             <p><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></p>
           <% end %>
-            <p>名前:<%= user.name %></p>
-            <p>紹介文：<%= user.introduction %></p>
+            <p><%= user.name %></p>
+            <p><%= user.introduction %></p>
+            <p>フォロー: <%= user.followings.count %></p>
+            <p>フォロワー: <%= user.followers.count %></p>
         <% end %>
     </div>
-
   </div>
 </div>
 

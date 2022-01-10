@@ -1,4 +1,5 @@
   <%= form_with(model:[post, comment]) do |f| %>
-    <%= f.text_area :comment_content, :size=>"60x5", class:"form-control",placeholder: "コメント記入欄" %>
+    <!--コメントフォームの入力-->
+    <%= f.text_area :comment_content, :size=>"60x5", class:"form-control", placeholder: "コメント記入欄" %>
     <%= f.submit "送信する" %>
   <% end %>

@@ -22,6 +22,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments.all
+    # @user = current_user
   end
 
   def edit
@@ -43,8 +44,12 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def bookmarks
+    @bookmarks = Bookmark.where(user_id: current_user.id).all
+  end
 
-   private
+
+  private
 
   def post_params
     params.require(:post).permit(:title, :image, :prefectures, :season, :word, :introduction)

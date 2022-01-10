@@ -17,6 +17,9 @@ class Post < ApplicationRecord
 
   # いいね機能のアソシエーション
   has_many :favorites, dependent: :destroy
+  
+  # レビュー機能のアソシエーション
+  has_many :reviews, dependent: :destroy
 
   # 投稿のバリデーション
   validates :image, presence: true
