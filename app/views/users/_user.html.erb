@@ -1,6 +1,8 @@
   プロフィール画像：<%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
   <p>名前:<%= user.name %></p>
   <p>紹介文：<%= user.introduction %></p>
+  <p>フォロー: <%= user.followings.count %></p>
+  <p>フォロワー: <%= user.followers.count %></p>
   <% if user.id == current_user.id %>
     <p><%= link_to "プロフィール編集", edit_user_path(user) %></p>
     <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
@@ -13,5 +15,4 @@
       <% else %>
         <%= link_to "フォローする", user_relationships_path(user.id), method: :post %>
       <% end %>
-
   <% end %>

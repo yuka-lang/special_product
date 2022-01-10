@@ -44,10 +44,11 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  # ブックマーク一覧を表示する
   def bookmarks
     @bookmarks = Bookmark.where(user_id: current_user.id).all
+    @user = current_user
   end
-
 
   private
 
