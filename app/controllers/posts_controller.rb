@@ -19,7 +19,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @tag_list=Tag.all
+    @tag_list = Tag.all
   end
 
   def show
@@ -56,6 +56,13 @@ class PostsController < ApplicationController
   def bookmarks
     @bookmarks = Bookmark.where(user_id: current_user.id).all
     @user = current_user
+  end
+
+  # タグ検索画面
+  def search_tag
+    @tag_lists = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @posts=@tag.posts.all
   end
 
   private

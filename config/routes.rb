@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'posts#index'
+  # タグの検索
+  get "search_tag"=>"posts#search_tag"
 
   # DM機能のルーティング
   get 'chat/:id', to: 'chats#show', as: 'chat'

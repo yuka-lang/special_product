@@ -7,8 +7,9 @@
     <div class="col-9 mx-auto text-center">
 
       <!--タグの表示-->
-      <% @post_tags.each do |tag| %>
-      <%=tag.name%><%="(#{tag.posts.count})" %><% end %>
+    <% @post_tags.each do |tag| %>
+        <%= link_to tag.name,search_tag_path(tag_id: tag.id)%><%="(#{tag.posts.count})" %>
+    <% end %>
 
       <p>タイトル</p>
       <h3 class="mb-4"><%= simple_format(@post.title) %></h3>　<!--改行を反映-->
