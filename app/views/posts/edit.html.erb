@@ -4,13 +4,11 @@
       <h3 class="d-inline-flex px-2 pt-2 bd-highlight">投稿情報編集</h3>
     </div>
   </div>
-
 <div class="container">
   <div class="row">
-    <div class="col-12 text-center">
+    <div class="col-9 mx-auto text-center">
 
       <%= form_with model:@post, local:true do |f| %>
-
         <!--バリデーションエラーメッセージ-->
         <%= render 'layouts/error_messages', model: f.object %>
 
@@ -43,15 +41,19 @@
             <div class="col-4">ひと言文！</div>
             <div><%= f.text_area :word, :size=>"50x2", class:"form-control" %></div>
           </div>
-          
+
           <div class="row form-group pt-3">
-            <div class="col-4">タグ付け</div>
-            <%= f.text_field :names, value: @tag_list, placeholder: "タグを複数つけるには' , 'で区切ってください" %>
+            <div class="col-4">タグ付け<br />(複数可能' , 'で区切ってください)</div>
+            <div><%= f.text_area :names, :size=>"50x2", class:"form-control", value: @tag_list %></div>
           </div>
 
         <%= f.submit "保存" %>
       <% end %>
-
+    </div>
+    <div class="col-3">
+      <h4>タグおすすめ</h4>
+      <!--タグ一覧-->
+      <%= render "posts/sidebar", tag_lists: @tag_lists %>
     </div>
   </div>
 </div>

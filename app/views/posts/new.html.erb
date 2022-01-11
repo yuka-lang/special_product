@@ -6,7 +6,7 @@
   </div>
 <div class="container">
   <div class="row">
-    <div class="col-12 text-center">
+    <div class="col-9 mx-auto text-center">
 
       <%= form_with model:@post, local:true do |f| %>
 
@@ -44,12 +44,17 @@
           </div>
 
           <div class="row form-group pt-3">
-            <div class="col-4">タグ付け</div>
-            <%= f.text_field :names, placeholder:",で区切ってください", class:"form-control" %>
+            <div class="col-4">タグ付け<br />(複数可能' , 'で区切ってください)</div>
+            <div><%= f.text_field :names, :size=>"50x2", class:"form-control" %></div>
           </div>
 
         <%= f.submit "登録" %>
       <% end %>
-    </div>
+      </div>
+      <div class="col-3">
+        <h4>タグおすすめ</h4>
+        <!--タグ一覧-->
+        <%= render "posts/sidebar", tag_lists: @tag_lists %>
+      </div>
   </div>
 </div>

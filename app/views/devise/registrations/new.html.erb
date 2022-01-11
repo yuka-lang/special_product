@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="card card-container">
+  <div class="card card-container p-4 mx-auto mt-5">
     <img id="profile-img" class="profile-img img-circle" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-    
+
     <!--新規登録フォーム-->
     <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
       <div class="mt-2">
@@ -29,7 +29,7 @@
       </div>
     <% end %>
 
-      <p><span>----</span> 登録済みのお客様ですか？ <span>----</span></p>
+      <p><span>-------</span> 登録済みのお客様ですか？ <span>------</span></p>
       <div class= "d-flex justify-content-center">
      <%= link_to "ログイン", new_user_session_path %>を行ってください
 

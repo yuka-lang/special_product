@@ -2,7 +2,6 @@
     <h1 class="text-center p-4">特産物シェアサイト</h1>
     <p>...</p>
 </div>
-
 <div class="container">
   <div class="row">
     <div class="col-9 mx-auto text-center">
@@ -28,13 +27,9 @@
       </div>
       <div class="col-3">
       <h4>サイドバー</h4>
+        <!--タグ一覧表示-->
+        <%= render "posts/sidebar", tag_lists: @tag_lists %>
     </div>
-
-    <!--タグリスト-->
-    <% @tag_list.each do |list|%>
-      <%=link_to list.name,search_tag_path(tag_id: list.id) %>
-      <%="(#{list.posts.count})" %>
-    <% end %>
   </div>
 </div>
 

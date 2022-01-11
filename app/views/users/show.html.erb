@@ -8,10 +8,12 @@
       <h1><%= @user.name %>さんの投稿一覧</h1>
       <% @posts.each do |post| %>
         <div>
-          <%= link_to post_path(post.id) do %>
-            <%= attachment_image_tag post, :image, :fill, 200, 200, format: "jpeg", fallback: "no_image.jpg" %>
-            <p><%= post.title %></p>
-          <% end %>
+          <p>
+            <%= link_to post_path(post.id) do %>
+              <%= attachment_image_tag post, :image, :fill, 200, 200, format: "jpeg", fallback: "no_image.jpg" %>
+              <p><%= post.title %></p>
+            <% end %>
+          </p>
         </div>
       <% end %>
     </div>

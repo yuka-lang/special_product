@@ -2,6 +2,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @tag_lists = Tag.all
   end
 
   def create
@@ -19,7 +20,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    @tag_list = Tag.all
+    @tag_lists = Tag.all
   end
 
   def show
@@ -28,11 +29,13 @@ class PostsController < ApplicationController
     @comments = @post.comments.all
     @post_tags = @post.tags
     @user = current_user
+    @tag_lists = Tag.all
   end
 
   def edit
     @post = Post.find(params[:id])
-    @tag_list=@post.tags.pluck(:name).join(',')
+    @tag_list = @post.tags.pluck(:name).join(',')
+    @tag_lists = Tag.all
   end
 
   def update
@@ -60,9 +63,8 @@ class PostsController < ApplicationController
 
   # タグ検索画面
   def search_tag
-    @tag_lists = Tag.all
     @tag = Tag.find(params[:tag_id])
-    @posts=@tag.posts.all
+    @posts = @tag.posts.all
   end
 
   private
