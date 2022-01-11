@@ -66,6 +66,13 @@ class PostsController < ApplicationController
     @tag = Tag.find(params[:tag_id])
     @posts = @tag.posts.all
   end
+  
+  # 検索機能
+  def search
+    @posts = Post.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
+  end
 
   private
 
