@@ -4,7 +4,6 @@
       <h3 class="d-inline-flex px-2 pt-2 bd-highlight">投稿新規投稿</h3>
     </div>
   </div>
-
 <div class="container">
   <div class="row">
     <div class="col-12 text-center">
@@ -44,9 +43,13 @@
             <div><%= f.text_area :word, :size=>"50x2", class:"form-control" %></div>
           </div>
 
+          <div class="row form-group pt-3">
+            <div class="col-4">タグ付け</div>
+            <%= f.text_field :names, placeholder:",で区切ってください", class:"form-control" %>
+          </div>
+
         <%= f.submit "登録" %>
       <% end %>
-
     </div>
   </div>
 </div>

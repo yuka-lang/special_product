@@ -43,6 +43,11 @@
             <div class="col-4">ひと言文！</div>
             <div><%= f.text_area :word, :size=>"50x2", class:"form-control" %></div>
           </div>
+          
+          <div class="row form-group pt-3">
+            <div class="col-4">タグ付け</div>
+            <%= f.text_field :names, value: @tag_list, placeholder: "タグを複数つけるには' , 'で区切ってください" %>
+          </div>
 
         <%= f.submit "保存" %>
       <% end %>
