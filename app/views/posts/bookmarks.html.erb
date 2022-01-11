@@ -6,7 +6,6 @@
       <div class="col-md-8 offset-md-1">
         <h3>ブックマーク一覧</h3>
         <% @bookmarks.each do |bookmark| %>
-        <p><%#= bookmark.post.user.name %>
         <%= link_to post_path(bookmark.post.id) do %>
           <%= attachment_image_tag bookmark.post, :image, :fill, 200, 150, format: 'jpeg', fallback: "no_image.jpg" %>
         <% end %>

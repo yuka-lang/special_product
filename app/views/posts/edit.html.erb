@@ -1,16 +1,16 @@
 <div class="container">
   <div class="row py-3">
     <div  class="col-3 offset-1 text-center">
-      <h3 class="d-inline-flex px-2 pt-2 bd-highlight">会員情報編集</h3>
+      <h3 class="d-inline-flex px-2 pt-2 bd-highlight">投稿情報編集</h3>
     </div>
   </div>
 
 <div class="container">
   <div class="row">
     <div class="col-12 text-center">
-      
+
       <%= form_with model:@post, local:true do |f| %>
-      
+
         <!--バリデーションエラーメッセージ-->
         <%= render 'layouts/error_messages', model: f.object %>
 
@@ -18,27 +18,27 @@
             <div class="col-4">投稿画像</div>
             <div><%= f.attachment_field :image %></div>
           </div>
-    
+
           <div class="row form-group pt-3">
             <div class="col-4">タイトル</div>
             <div><%= f.text_area :title, :size=>"50x2", class:"form-control" %></div>
           </div>
-    
+
           <div class="row form-group pt-3">
             <div class="col-4">都道府県</div>
             <div><%= f.text_field :prefectures, class:"form-control" %></div>
           </div>
-    
+
           <div class="row form-group pt-3">
             <div class="col-4">おすすめ季節</div>
             <div><%= f.text_field :season, class:"form-control" %></div>
           </div>
-    
+
           <div class="row form-group pt-3">
             <div class="col-4">紹介文</div>
             <div><%= f.text_area :introduction, :size=>"50x10", class:"form-control" %></div>
           </div>
-    
+
           <div class="row form-group pt-3">
             <div class="col-4">ひと言文！</div>
             <div><%= f.text_area :word, :size=>"50x2", class:"form-control" %></div>

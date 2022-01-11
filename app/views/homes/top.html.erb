@@ -6,7 +6,7 @@
 <div class="container">
   <div class="row">
     <div class="col-9 mx-auto text-center">
-    <h4 class="pt-5">投稿一覧</h4>
+      <h4 class="pt-5">投稿一覧</h4>
       <% @posts.each do |post| %>
       <div class="col">
         <div class="card" style="width: 18rem;">
@@ -15,9 +15,9 @@
               <%= attachment_image_tag post, :image, :fill, 200, 150, format: 'jpeg', fallback: "no_image.jpg" %>
             <% end %>
           </p>
-          <p class="card-title">タイトル：<%= post.title %></p>
+          <p class="card-title"><%= post.title %></p>
         </div>
-        </div>
+      </div>
       <% end %>
     </div>
     <div class="col-3">

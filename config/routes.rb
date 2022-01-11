@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: 'homes#top'
+  root to: 'posts#index'
 
   # DM機能のルーティング
   get 'chat/:id', to: 'chats#show', as: 'chat'
