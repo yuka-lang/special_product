@@ -3,14 +3,6 @@
     <p>...</p>
 </div>
 
-<div class="search-form">
-  <%= form_with url: search_path, method: :get, local: true do |f| %>
-    <%= f.text_field :keyword, value: @keyword %>
-    <%= f.submit "検索" %>
-  <% end %>
-</div>
-
-
 <div class="container">
   <div class="row">
     <div class="col-9 mx-auto text-center">
@@ -34,6 +26,7 @@
           </div>
         <% end %>
      </div>
+
     <div class="col-3">
       <h4>サイドバー</h4>
         <!--タグ一覧表示-->

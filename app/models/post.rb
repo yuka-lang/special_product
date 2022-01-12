@@ -39,7 +39,7 @@ class Post < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
-  # タグのメソッドを定義
+  # タグ付けのメソッドを定義
   def save_tag(tag_list)
     # すでにタグ登録していた場合、紐ずくタグの削除
     if self.tags != nil
@@ -54,8 +54,13 @@ class Post < ApplicationRecord
     end
   end
 
-  def self.search(keyword)
-    where(["title like? OR introduction like?", "%#{keyword}%", "%#{keyword}%"])
+  # 探索機能の検索内容を表示
+  def self.search(search)
+    if search != ""
+      Post.where(['title LIKE(?) OR introduction LIKE(?) OR  season LIKE(?) OR prefectures LIKE(?)', "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])
+    else
+      all
+    end
   end
 
 end

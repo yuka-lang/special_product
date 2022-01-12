@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'posts#index'
-  
-  #タグの検索
-  get 'search' => 'posts#search'
+
+  # #タグの検索
+  # get 'search' => 'posts#search'
   # 検索機能のルーティング
   get 'search_tag'=>'posts#search_tag'
   # DM機能のルーティング
@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
     resources :reviews, only: [:create]
+    collection do
+      get 'search'
+    end
   end
 
 end

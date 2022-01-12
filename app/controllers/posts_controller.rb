@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     # 受け取った値を,で区切って配列にする
-    tag_list=params[:post][:names].split(',')
+    tag_list = params[:post][:names].split(',')
     if @post.save
        @post.save_tag(tag_list)
       redirect_to post_path(@post.id)
@@ -66,12 +66,17 @@ class PostsController < ApplicationController
     @tag = Tag.find(params[:tag_id])
     @posts = @tag.posts.all
   end
-  
+
   # 検索機能
   def search
     @posts = Post.search(params[:keyword])
     @keyword = params[:keyword]
-    render "index"
+    # render "index"
+    if Post.present?
+      render "index"
+    else
+      redirect_to new_post_path
+    end
   end
 
   private
