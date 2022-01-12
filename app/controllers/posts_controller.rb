@@ -64,6 +64,7 @@ class PostsController < ApplicationController
   # タグ検索画面
   def search_tag
     @tag = Tag.find(params[:tag_id])
+    @tag_lists = Tag.all
     @posts = @tag.posts.all
   end
 
@@ -71,12 +72,8 @@ class PostsController < ApplicationController
   def search
     @posts = Post.search(params[:keyword])
     @keyword = params[:keyword]
-    # render "index"
-    if Post.present?
-      render "index"
-    else
-      redirect_to new_post_path
-    end
+    @tag_lists = Tag.all
+    render "index"
   end
 
   private

@@ -1,19 +1,30 @@
 <div class="container">
-  <h5>タグが<%= @tag.name %>の投稿一覧</h5>
-
-  <% @posts.each do |post| %>
-    <!--投稿はカードで囲む-->
-    <div class="card">
-      <div class="card-body">
-        <p>
-          <%= link_to post_path(post.id) do %>
-            <%= attachment_image_tag post, :image, :fill, 200, 150, format: 'jpeg', fallback: "no_image.jpg" %>
-        </p>
-            <p class="card-title"><%= post.title %></p>
-          <% end %>
-            <p class="ml-5">❤️️<%= post.favorites.count %></p>
-            <i class="fas fa-tag"><%= post.tags.map(&:name).join(', ') %></i>
+  <div class="row">
+    <div class="col-md-9 mx-auto text-center">
+      <h5>タグが<%= @tag.name %>の投稿一覧</h5>
+        <% @posts.each do |post| %>
+          <!--投稿はカードで囲む-->
+          <div class="card-md-3">
+            <div class="card pt-3 px-3" style="width: 18rem;">
+              <p class="card-img-top">
+                <%= link_to post_path(post.id) do %>
+                  <%= attachment_image_tag post, :image, :fill, 200, 150, format: 'jpeg', fallback: "no_image.jpg" %>
+              </p>
+                  <p class="card-title"><%= post.title %></p>
+                <% end %>
+                  <p class="ml-5">❤️️<%= post.favorites.count %></p>
+                  <i class="fas fa-tag">
+                    <%#= link_to post.tags.map(&:name).join(', '),search_tag_path(@tag.id) %>
+                    <%= post.tags.map(&:name).join(', ') %>
+                  </i>
+            </div>
+          </div>
+        <% end %>
       </div>
+    <div class="col-3">
+      <h4>サイドバー</h4>
+        <!--タグ一覧表示-->
+        <%= render "posts/sidebar", tag_lists: @tag_lists %>
     </div>
-  <% end %>
+  </div>
 </div>
