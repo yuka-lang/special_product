@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 mx-auto text-center">
-      <h5>タグが<%= @tag.name %>の投稿一覧</h5>
+      <h5><%= @tag.name %>の投稿一覧</h5>
        <div class="row">
         <% @posts.each do |post| %>
           <!--投稿はカードで囲む-->
@@ -16,8 +16,9 @@
                   <% end %>
                     <p class="ml-5">❤️️<%= post.favorites.count %></p>
                     <i class="fas fa-tag">
-                      <%#= link_to post.tags.map(&:name).join(', '),search_tag_path(@tag.id) %>
-                      <%= post.tags.map(&:name).join(', ') %>
+                  <% post.tags.each do |tag| %>
+                    <%= link_to tag.name,search_tag_path(tag_id: tag.id)  %>
+                  <% end %>
                     </i>
               </div>
             </div>
