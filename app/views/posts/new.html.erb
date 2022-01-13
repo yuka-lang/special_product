@@ -30,7 +30,10 @@
 
           <div class="row form-group pt-3">
             <div class="col-4">おすすめ季節</div>
-            <div><%= f.text_field :season, class:"form-control" %></div>
+            <label class="p-2"><%= f.radio_button :season,"春", checked: true %> 春(3月~5月)</label>
+            <label class="p-2"><%= f.radio_button :season,"夏" %> 夏(6月~8月)</label>
+            <label class="p-2"><%= f.radio_button :season,"秋" %> 秋(9月~11月)</label>
+            <label class="p-2"><%= f.radio_button :season,"冬" %> 冬(12月~2月)</label>
           </div>
 
           <div class="row form-group pt-3">

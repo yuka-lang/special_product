@@ -26,9 +26,9 @@
               </div>
             </div>
           <% end %>
-            <div class="d-flex justify-content-center"><%= paginate @posts %></div>
+          <div class="pagination justify-content-center"><%= paginate @posts %></div>
         <% else %>
-          <h3>該当キーワードがありません</h3>
+          <h3>投稿がありません</h3>
         <% end %>
       </div>
       <div class="col-3">

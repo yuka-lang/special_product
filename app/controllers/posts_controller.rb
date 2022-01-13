@@ -70,7 +70,7 @@ class PostsController < ApplicationController
 
   # 検索機能
   def search
-    @posts = Post.search(params[:keyword])
+    @posts = Post.search(params[:keyword]).page(params[:page]).per(6)
     @keyword = params[:keyword]
     @tag_lists = Tag.all
     render "index"
