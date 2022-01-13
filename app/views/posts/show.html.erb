@@ -1,62 +1,63 @@
 <div class="container py-3">
-  <div class="row pb-4">
-    <div class="col-md-2 offset-1 p-3 text-center">
-    </div>
-  </div>
   <div class="row">
-    <div class="col-9 mx-auto text-center">
-
-      <!--タグの表示-->
-    <% @post_tags.each do |tag| %>
-        <%= link_to tag.name,search_tag_path(tag_id: tag.id)%><%="(#{tag.posts.count})" %>
-    <% end %>
-
-      <p>タイトル</p>
-      <h3 class="mb-4"><%= simple_format(@post.title) %></h3>　<!--改行を反映-->
-      <p class="text-start">投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %>
-      <p class="mt-3">都道府県：<%= @post.prefectures %><span class="ml-5">おすすめ季節: <%= @post.season %></span></p>
-      <%= attachment_image_tag @post, :image, :fill, 530, 350, format: 'jpeg', fallback: "no_image.jpg" %>
-      <p class="mt-4">紹介文</p>
-      <h4><%= simple_format(@post.introduction) %></h4></br>　<!--改行を反映-->
-      <p>投稿者からのひと言</p>
-      <h5><%= simple_format(@post.word) %></h5>  <!--改行を反映-->
-      <% if @post.user == current_user %>
-        <%= link_to "編集", edit_post_path(@post) %>
-        <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "本当に削除しますか？"}  %>
-      <% end %>
-
-      <% if user_signed_in? %>
-        <!--いいね機能の部分テンプレート-->
-        <div id="favorites_buttons_<%= @post.id %>">
-    　　  　<%= render "favorites/favorite", post: @post %>
-    　　</div>
-
-    　　<!--ブックマーク機能の部分テンプレート-->
-        <div id="bookmark_button_<%= @post.id %>">
-          <%= render "bookmarks/bookmark", post: @post %>
-        </div>
-
-        <div>投稿者名：
-          <%= link_to user_path(@user.id) do %>
-            <%= @post.user.name %>
+    <div class="col-9">
+      <div class="row">
+        <div class="col-12 mx-auto p-3 text-center">
+            <!--タグの表示-->
+          <% @post_tags.each do |tag| %>
+              <%= link_to tag.name,search_tag_path(tag_id: tag.id)%><%="(#{tag.posts.count})" %>
           <% end %>
-        </div>
 
-        <!--ここからコメント機能-->
-        <div class="col-4">
-            <p>コメント件数：<%= @post.comments.count %></p>
-          <!--コメントの内容の部分テンプレート-->
-          <div id = "comments_area">
-            <%= render "comments/comment", post: @post %>
+          <p>タイトル</p>
+          <h3 class="mb-4"><%= simple_format(@post.title) %></h3>　<!--改行を反映-->
+          <p class="text-start">投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %>
+          <p class="mt-3">都道府県：<%= @post.prefectures %><span class="ml-5">おすすめ季節: <%= @post.season %></span></p>
+          <%= attachment_image_tag @post, :image, :fill, 530, 350, format: 'jpeg', fallback: "no_image.jpg" %>
+          <p class="mt-4">紹介文</p>
+          <h4><%= simple_format(@post.introduction) %></h4></br>　<!--改行を反映-->
+          <p>投稿者からのひと言</p>
+          <h5><%= simple_format(@post.word) %></h5>  <!--改行を反映-->
+          <% if @post.user == current_user %>
+            <%= link_to "編集", edit_post_path(@post) %>
+            <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "本当に削除しますか？"}  %>
+          <% end %>
+
+          <% if user_signed_in? %>
+            <!--いいね機能の部分テンプレート-->
+            <div id="favorites_buttons_<%= @post.id %>">
+        　　  　<%= render "favorites/favorite", post: @post %>
+        　　</div>
+
+        　　<!--ブックマーク機能の部分テンプレート-->
+            <div id="bookmark_button_<%= @post.id %>">
+              <%= render "bookmarks/bookmark", post: @post %>
+            </div>
+
+            <div>投稿者:
+              <%= link_to user_path(@post.user.id) do %>
+                <%= @post.user.name %>
+              <% end %>
+            </div>
           </div>
-          <!--コメントフォームの部分テンプレート-->
-          <p class="col-5">
-           <%= render "comments/form", post: @post, comment: @comment %>
-          </p>
         </div>
-      <% end %>
-        <p><%= link_to "一覧に戻る", posts_path %></p>
-    </div>
+            <!--コメントの内容の部分テンプレート-->
+            <div id = "comments_area">
+              <%= render "comments/comment", post: @post %>
+            </div>
+
+            <!--コメント入力フォーム-->
+            <div class="row p-4">
+              <div class="col-2">
+                <!--自分のプロフィール画像を表示-->
+                <%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+              </div>
+              <div class="col-10">
+                <%= render "comments/form", post: @post, comment: @comment %>
+              </div>
+            </div>
+          <% end %>
+            <p><%= link_to "一覧に戻る", posts_path %></p>
+        </div>
     <div class="col-3">
       <p>人気のタグはこちら</p>
       <!--タグ一覧-->
