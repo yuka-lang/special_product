@@ -1,8 +1,8 @@
 <div class="container py-3">
   <div class="row">
-    <div class="col-9">
+    <div class="col-md-9">
       <div class="row">
-        <div class="col-12 mx-auto p-3 text-center">
+        <div class="col-md-12 mx-auto p-3 text-center">
             <!--タグの表示-->
           <% @post_tags.each do |tag| %>
               <%= link_to tag.name,search_tag_path(tag_id: tag.id)%><%="(#{tag.posts.count})" %>
@@ -46,19 +46,19 @@
             </div>
 
             <!--コメント入力フォーム-->
-            <div class="row p-4">
-              <div class="col-2">
+            <div class="row px-5">
+              <div class="col-md-2">
                 <!--自分のプロフィール画像を表示-->
                 <%= attachment_image_tag current_user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
               </div>
-              <div class="col-10">
+              <div class="col-md-10">
                 <%= render "comments/form", post: @post, comment: @comment %>
               </div>
             </div>
           <% end %>
             <p><%= link_to "一覧に戻る", posts_path %></p>
         </div>
-    <div class="col-3">
+    <div class="col-md-3">
       <p>人気のタグはこちら</p>
       <!--タグ一覧-->
       <%= render "posts/sidebar", tag_lists: @tag_lists %>

@@ -1,23 +1,26 @@
 <div class= "container">
   <div class= "row">
-    <div class = "col-md-3">
+    <div class = "col-md-4">
       <%= render "users/user", user: @user %>
     </div>
-    <div class="col-md-8 offset-md-1">
-      <!--投稿一覧を表示-->
+
+    <div class="col-md-8">
       <h4><%= @user.name %>さんの投稿一覧</h4>
-      <% @posts.each do |post| %>
-        <div class="col-md-4">
-          <p>
-            <%= link_to post_path(post.id) do %>
-              <%= attachment_image_tag post, :image, :fill, 200, 150, format: "jpeg", fallback: "no_image.jpg" %>
-              <p><%= post.title %></p>
-            <% end %>
-          </p>
-        </div>
-      <% end %>
+      <div class="row text-center pt-4">
+          <!--投稿一覧を表示-->
+          <% @posts.each do |post| %>
+            <div class="col-md-6">
+              <p>
+                <%= link_to post_path(post.id) do %>
+                  <%= attachment_image_tag post, :image, :fill, 250, 150, format: "jpeg", fallback: "no_image.jpg", class: "shadow-lg" %>
+                  <p><%= post.title %></p>
+                <% end %>
+              </p>
+            </div>
+          <% end %>
+      </div>
     </div>
- </div>
+  </div>
 </div>
 
 <%= paginate @posts %>
