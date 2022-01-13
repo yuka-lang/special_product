@@ -42,7 +42,7 @@
           </div>
 
           <div class="row form-group pt-3">
-            <div class="col-4">ひと言文！</div>
+            <div class="col-4">ひと言文</div>
             <div><%= f.text_area :word, :size=>"50x2", class:"form-control" %></div>
           </div>
 
@@ -54,10 +54,10 @@
         <%= f.submit "登録" %>
       <% end %>
       </div>
-      <div class="col-3">
-        <h4>タグおすすめ</h4>
-        <!--タグ一覧-->
-        <%= render "posts/sidebar", tag_lists: @tag_lists %>
-      </div>
+    <div class="col-3">
+      <h4>タグおすすめ</h4>
+      <!--タグ一覧-->
+      <%= render "posts/sidebar", tag_lists: @tag_lists %>
+    </div>
   </div>
 </div>
