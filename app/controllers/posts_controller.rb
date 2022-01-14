@@ -20,7 +20,10 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.page(params[:page]).reverse_order.per(6)
-    # @posts = Post.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    # Favoriteモデルから今週のデータを取り出し、数の多い順に並び替えたpost_idの値をPostモデルから探す(３位目までを表示)
+    @week_post_favorite_ranks = Post.find(Favorite.group(:post_id).where(created_at: Time.current.all_week).order("count(post_id) DESC").limit(3).pluck(:post_id))
+    #上記と同じように月間のコメント数の多いランキングを表示する
+    @month_post_comment_ranks = Post.find(Comment.group(:post_id).where(created_at: Time.current.all_month).order("count(user_id) DESC").limit(3).pluck(:user_id))
     @tag_lists = Tag.all
   end
 
@@ -67,13 +70,22 @@ class PostsController < ApplicationController
     @tag = Tag.find(params[:tag_id])
     @tag_lists = Tag.all
     @posts = @tag.posts.all
+     # Favoriteモデルから今週のデータを取り出し、数の多い順に並び替えたpost_idの値をPostモデルから探す
+    @week_post_favorite_ranks = Post.find(Favorite.group(:post_id).where(created_at: Time.current.all_week).order('count(post_id) DESC').limit(3).pluck(:post_id))
+    #上記と同じように月間のコメント数の多いランキングを表示する
+    @month_post_comment_ranks = Post.find(Comment.group(:post_id).where(created_at: Time.current.all_month).order("count(user_id) DESC").limit(3).pluck(:user_id))
   end
 
   # 検索機能
   def search
+    # キーワードを探しpaginationを利用
     @posts = Post.search(params[:keyword]).page(params[:page]).per(6)
     @keyword = params[:keyword]
     @tag_lists = Tag.all
+     # Favoriteモデルから今週のデータを取り出し、数の多い順に並び替えたpost_idの値をPostモデルから探す
+    @week_post_favorite_ranks = Post.find(Favorite.group(:post_id).where(created_at: Time.current.all_week).order('count(post_id) DESC').limit(3).pluck(:post_id))
+    #上記と同じように月間のコメント数の多いランキングを表示する
+    @month_post_comment_ranks = Post.find(Comment.group(:post_id).where(created_at: Time.current.all_month).order("count(user_id) DESC").limit(3).pluck(:user_id))
     render "index"
   end
 

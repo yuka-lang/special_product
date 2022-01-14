@@ -19,7 +19,6 @@ class User < ApplicationRecord
 
   # いいね機能のアソシエーション
   has_many :favorites, dependent: :destroy
-  has_many :favorited_posts, through: :favorites, source: :post
 
   # フォローをした、されたの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -31,7 +30,7 @@ class User < ApplicationRecord
 
   # プロフィール画像投稿用
   attachment :profile_image
-  
+
    # フォローしたときの処理
   def follow(user_id)
     relationships.create(followed_id: user_id)

@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row">
+  <div class="row text-center">
     <div class="col-md-8 mx-auto text-center">
       <h5 class="border-bottom"><i class="fas fa-tag"></i><%= @tag.name %>の投稿カテゴリー</h5>
        <div class="row">
@@ -30,7 +30,7 @@
     <div class="col-3">
       <h4>サイドバー</h4>
         <!--タグ一覧表示-->
-        <%= render "posts/sidebar", tag_lists: @tag_lists %>
+        <%= render "posts/sidebar", tag_lists: @tag_lists, week_post_favorite_ranks: @week_post_favorite_ranks, month_post_comment_ranks: @month_post_comment_ranks %>
     </div>
   </div>
 </div>
