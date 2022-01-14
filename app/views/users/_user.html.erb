@@ -1,5 +1,5 @@
-  プロフィール画像：<%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
-  <p>名前:<%= user.name %></p>
+　<p><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+  <p><%= user.name %></p>
   <p>紹介文：<%= user.introduction %></p>
   <p>フォロー: <%= user.followings.count %></p>
   <p>フォロワー: <%= user.followers.count %></p>

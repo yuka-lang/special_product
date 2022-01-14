@@ -3,12 +3,12 @@
         <p>
           <%= link_to post_favorites_path(post), method: :delete, remote: true do %>
             ♥<%= post.favorites.count %>
-          <% end %>美味しそう！
+          <% end %>いいね！
         </p>
         <% else %>
         <p>
           <%= link_to post_favorites_path(post), method: :post, remote: true do %>
             ♡<%= post.favorites.count %>
-          <% end %>美味しそう！
+          <% end %>いいね！
         </p>
       <% end %>
