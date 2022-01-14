@@ -47,9 +47,9 @@
 		display:block;
 		}
 
-
+// スライドショーの画像
 	.image1 {
-  background-image: url(top8.jpg);
+  background-image: url(top.jpg);
 	}
 	.image2 {
 	  background-image: url(top9.jpg);
@@ -58,12 +58,32 @@
 	  background-image: url(top11.jpg);
 	}
 	.image4 {
-	  background-image: url(top.jpg);
+	  background-image: url(top23.jpg);
 	}
 	.image5 {
-	  background-image: url(top20.jpg);
+	  background-image: url(top24.jpg);
 	}
 
 	#container{
 	  height: 400px;
+	}
+
+	
+	// ヘッダーのボタン外側
+	.btn-outline-secondary {
+	  border-color: #00fa9a;
+	}
+	
+	//ボタンクリック時の背景色
+	.btn-sm:hover, .btn-sm:focus,
+	.btn-sm:active, .btn-sm:active:focus, .btn-sm:active:hover, .btn-sm:active.focus,
+	.btn-sm.active, .btn-sm.active:focus, .btn-sm.active:hover, .btn-sm.active.focus,
+	.open > .dropdown-toggle.btn-sm,
+	.open > .dropdown-toggle.btn-sm:hover,
+	.open > .dropdown-toggle.btn-sm:focus,
+	.open > .dropdown-toggle.btn-sm.focus,
+	.btn-sm.disabled:hover, .btn-sm[disabled]:hover, fieldset[disabled] .btn-sm:hover,
+	.btn-sm.disabled:focus, .btn-sm[disabled]:focus, fieldset[disabled] .btn-sm:focus,
+	.btn-sm.disabled.focus, .btn-sm[disabled].focus, fieldset[disabled] .btn-sm.focus {
+	    background-color: #6b8e23;
 	}
