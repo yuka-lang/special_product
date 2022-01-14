@@ -19,6 +19,7 @@ class User < ApplicationRecord
 
   # いいね機能のアソシエーション
   has_many :favorites, dependent: :destroy
+  has_many :favorited_posts, through: :favorites, source: :post
 
   # フォローをした、されたの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy

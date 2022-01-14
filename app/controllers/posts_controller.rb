@@ -20,6 +20,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.page(params[:page]).reverse_order.per(6)
+    # @posts = Post.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
     @tag_lists = Tag.all
   end
 

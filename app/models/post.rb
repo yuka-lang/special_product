@@ -17,6 +17,7 @@ class Post < ApplicationRecord
 
   # いいね機能のアソシエーション
   has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :user
 
   # レビュー機能のアソシエーション
   has_many :reviews, dependent: :destroy
