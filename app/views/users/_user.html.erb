@@ -7,7 +7,7 @@
     <p><%= link_to "プロフィール編集", edit_user_path(user) %></p>
     <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
     <p><%= link_to "新規投稿", new_post_path(user) %></p>
-    <p><%= link_to "ブックマーク一覧", bookmarks_posts_path %></p>
+    <p><i class="fas fa-bookmark"></i><%= link_to " ブックマーク一覧", bookmarks_posts_path %></p>
   <% else %>
    <!--フォロー,フォロワー機能-->
       <% if current_user.following?(user) %>

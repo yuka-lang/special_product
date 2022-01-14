@@ -13,7 +13,7 @@
               <p>
                 <%= link_to post_path(post.id) do %>
                   <%= attachment_image_tag post, :image, :fill, 250, 150, format: "jpeg", fallback: "no_image.jpg", class: "shadow-lg" %>
-                  <p><%= post.title %></p>
+                  <p class="px-5"><%= post.title %></p>
                 <% end %>
               </p>
             </div>

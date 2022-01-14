@@ -10,7 +10,7 @@
               <!--検索フォーム-->
               <%= form_with(url: search_posts_path, local: true, method: :get, class: "search-form  nav-item") do |f| %>
                 <li class="m-3">
-                  <%= f.text_field :keyword, placeholder: "キーワードで検索する", class: "search-input nav-item" %>
+                  <%= f.text_field :keyword, placeholder: "キーワードで検索する", class: "search-input" %>
                   <%= f.submit "検索", class: "search-btn" %></li>
               <% end %>
               <% if user_signed_in? %>

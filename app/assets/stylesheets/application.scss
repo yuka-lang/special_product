@@ -68,12 +68,12 @@
 	  height: 400px;
 	}
 
-	
+
 	// ヘッダーのボタン外側
 	.btn-outline-secondary {
 	  border-color: #00fa9a;
 	}
-	
+
 	//ボタンクリック時の背景色
 	.btn-sm:hover, .btn-sm:focus,
 	.btn-sm:active, .btn-sm:active:focus, .btn-sm:active:hover, .btn-sm:active.focus,
@@ -87,3 +87,11 @@
 	.btn-sm.disabled.focus, .btn-sm[disabled].focus, fieldset[disabled] .btn-sm.focus {
 	    background-color: #6b8e23;
 	}
+
+
+// 検索のボタン
+.search-form input[type="submit"]{
+	 background: #224b37;
+	 border-radius: 5px;
+	 color: #fff;
+}

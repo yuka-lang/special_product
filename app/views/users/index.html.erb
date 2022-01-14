@@ -1,20 +1,30 @@
 <div class= 'container'>
   <div class= 'row'>
-    <div class = 'col-md-3'>
+    <div class = 'col-md-4'>
       <%= render "users/user", user: @user %>
     </div>
-    <div class='col-md-8 offset-md-1'>
-      <h4>会員一覧</h4>
-        <% @users.each do |user| %>
-            <p>プロフィール画像</p>
-          <%= link_to user_path(user.id) do %>
-            <p><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></p>
-          <% end %>
-            <p><%= user.name %></p>
-            <p><%= user.introduction %></p>
-            <p>フォロー: <%= user.followings.count %></p>
-            <p>フォロワー: <%= user.followers.count %></p>
-        <% end %>
+    <div class='col-md-8'>
+        <table class="table">
+          <thead>
+            <tr class="table-secondary">
+              <th>プロフィール画像</th>
+              <th>氏名</th>
+              <th>紹介文</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!--会員一覧の表示-->
+              <% @users.each do |user| %>
+                <tr>
+                <td><%= link_to user_path(user.id) do %>
+                  <%= attachment_image_tag user, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+                <% end %></td>
+                  <td><%= user.name %></td>
+                  <td><%= simple_format(user.introduction) %></td>
+                </tr>
+              <% end %>
+          </tbody>
+        </table>
     </div>
   </div>
 </div>
