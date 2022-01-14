@@ -1,12 +1,11 @@
-　<p><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+　<p><%= attachment_image_tag user, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %></p>
   <p><%= user.name %></p>
-  <p>紹介文：<%= user.introduction %></p>
+  <p><%= simple_format(user.introduction) %></p>
   <p>フォロー: <%= user.followings.count %></p>
   <p>フォロワー: <%= user.followers.count %></p>
   <% if user.id == current_user.id %>
-    <p><%= link_to "プロフィール編集", edit_user_path(user) %></p>
+    <botton><%= link_to "プロフィール編集", edit_user_path(user), class: "btn btn-outline-primary fas fa-cog" %></botton>
     <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
-    <p><%= link_to "新規投稿", new_post_path(user) %></p>
     <p><i class="fas fa-bookmark"></i><%= link_to " ブックマーク一覧", bookmarks_posts_path %></p>
   <% else %>
    <!--フォロー,フォロワー機能-->

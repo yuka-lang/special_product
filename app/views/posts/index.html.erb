@@ -12,7 +12,7 @@
 <div class="container">
   <div class="row text-center">
     <div class="col-md-8 mx-auto text-center">
-      <h4 class="pt-5">投稿一覧</h4>
+      <h4 class="pt-5 border-bottom">投稿一覧</h4>
         <% if @posts.present? %>
           <div class="row">
             <% @posts.each do |post| %>
@@ -34,7 +34,7 @@
                     <% end %></i>
 
                     <% if user_signed_in? %>
-                      <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p>
+                      <p><%= link_to post.comments.count, post_path(post.id) %>コメント</p>
                     <% end %>
                 </div>
               </div>

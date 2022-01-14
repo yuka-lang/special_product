@@ -1,11 +1,12 @@
 <div class= "container">
-  <div class= "row">
-    <div class = "col-md-4">
+  <div class= "row px-4">
+    <div class = "col-md-3 border border-dark text-center">
       <%= render "users/user", user: @user %>
     </div>
 
-    <div class="col-md-8">
-      <h4><%= @user.name %>さんの投稿一覧</h4>
+    <div class="col-md-9">
+       <botton><p class="text-right"><%= link_to "新規投稿", new_post_path(@user),class: "btn btn-outline-success fas fa-plus" %></p></botton>
+      <h4 class="border-bottom"><span class="p-4"><%= @user.name %>さんの投稿</span></h4>
       <div class="row text-center pt-4">
           <!--投稿一覧を表示-->
           <% @posts.each do |post| %>
