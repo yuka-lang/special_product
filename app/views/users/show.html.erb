@@ -1,7 +1,7 @@
 <div class= "container">
   <div class= "row px-4">
     <div class = "col-md-3">
-      <div class="border border-dark text-center">
+      <div class="border border-dark text-center pb-4">
         <%= render "users/user", user: @user %>
       </div>
     </div>
@@ -13,12 +13,10 @@
           <!--投稿一覧を表示-->
           <% @posts.each do |post| %>
             <div class="col-md-6">
-              <p>
                 <%= link_to post_path(post.id) do %>
                   <%= attachment_image_tag post, :image, :fill, 250, 150, format: "jpeg", fallback: "no_image.jpg", class: "shadow-lg" %>
-                  <p class="px-5"><%= post.title %></p>
+                  <p class="px-5 text-body"><%= post.title %></p>
                 <% end %>
-              </p>
             </div>
           <% end %>
       </div>

@@ -53,10 +53,18 @@
         <%= f.submit "保存" %>
       <% end %>
     </div>
-    <div class="col-3">
-      <h4>タグおすすめ</h4>
-      <!--タグ一覧-->
-      <%= render "posts/sidebar", tag_lists: @tag_lists %>
+    <div class="col-md-3 text-center">
+      <div class="text-body border border-secondary py-3">
+        <h5><i class="fas fa-tag text-success"></i>人気のタグはこちら</h5>
+        <!--タグ一覧-->
+        <% @tag_lists.each do |list| %>
+            <% if list.posts.count != 0 %>
+              <button class=" border border-secondary ml-2 mt-1 text-dark" disabled>
+                <%=link_to list.name,search_tag_path(tag_id: list.id) %>
+                <%="(#{list.posts.count})" %></botton>
+            <% end %>
+          <% end %>
+      </div>
     </div>
   </div>
 </div>
