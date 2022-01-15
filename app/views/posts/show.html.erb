@@ -7,7 +7,6 @@
           <% @post_tags.each do |tag| %>
               <%= link_to tag.name,search_tag_path(tag_id: tag.id)%><%="(#{tag.posts.count})" %>
           <% end %>
-
           <p>タイトル</p>
           <h3 class="mb-4 border-bottom"><%= simple_format(@post.title) %></h3>　<!--改行を反映-->
           <p class="text-start">投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %>
@@ -18,20 +17,21 @@
           <p>投稿者からのひと言</p>
           <h5><%= simple_format(@post.word) %></h5>  <!--改行を反映-->
           <% if @post.user == current_user %>
-            <%= link_to "編集", edit_post_path(@post) %>
-            <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "本当に削除しますか？"}  %>
+            <%= link_to "編集", edit_post_path(@post), class: "btn btn-muted ml-2 mt-1 border"%>
+            <%= link_to "削除", post_path(@post), class: "btn btn-muted ml-2 mt-1 border", method: :delete, data: {confirm: "本当に削除しますか？"}  %>
           <% end %>
 
           <% if user_signed_in? %>
+          <div>
             <!--いいね機能の部分テンプレート-->
-            <div id="favorites_buttons_<%= @post.id %>">
+            <p id="favorites_buttons_<%= @post.id %>">
         　　  　<%= render "favorites/favorite", post: @post %>
-        　　</div>
+        　　</p>
 
         　　<!--ブックマーク機能の部分テンプレート-->
-            <div id="bookmark_button_<%= @post.id %>">
+            <p id="bookmark_button_<%= @post.id %>">
               <%= render "bookmarks/bookmark", post: @post %>
-            </div>
+            </p>
 
             <div>投稿者:
               <%= link_to user_path(@post.user.id) do %>
@@ -39,9 +39,8 @@
               <% end %>
             </div>
           </div>
-        </div>
             <!--コメントの内容の部分テンプレート-->
-            <div id = "comments_area">
+            <div class = "comments_area p-3">
               <%= render "comments/comment", post: @post %>
             </div>
 
@@ -58,16 +57,20 @@
           <% end %>
             <p><%= link_to "一覧に戻る", posts_path %></p>
         </div>
-    <div class="col-md-3">
-      <i class="fas fa-tag"></i>
-      <span>人気のタグはこちら</span>
-      <p> <!--タグ一覧-->
-      <% @tag_lists.each do |list| %>
-          <% if list.posts.count != 0 %>
-            <%=link_to list.name,search_tag_path(tag_id: list.id) %>
-            <%="(#{list.posts.count})" %>
+      </div>
+    </div>
+    <div class="col-md-3 text-center">
+      <div class="text-body border border-secondary py-3">
+        <h5><i class="fas fa-tag text-success"></i>人気のタグはこちら</h5>
+        <!--タグ一覧-->
+        <% @tag_lists.each do |list| %>
+            <% if list.posts.count != 0 %>
+              <button class=" border border-secondary ml-2 mt-1 text-dark" disabled>
+                <%=link_to list.name,search_tag_path(tag_id: list.id) %>
+                <%="(#{list.posts.count})" %></botton>
+            <% end %>
           <% end %>
-        <% end %></p>
+      </div>
     </div>
   </div>
 </div>

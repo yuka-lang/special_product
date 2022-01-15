@@ -20,9 +20,9 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.page(params[:page]).reverse_order.per(6)
-    # Favoriteモデルから今週のデータを取り出し、数の多い順に並び替えたpost_idの値をPostモデルから探す(３位目までを表示)
+    # Favoriteモデルから今週のデータを取り出し、数の多い順に並び替えたpost_idの値をPostモデルから探す(３位までを表示)
     @week_post_favorite_ranks = Post.find(Favorite.group(:post_id).where(created_at: Time.current.all_week).order("count(post_id) DESC").limit(3).pluck(:post_id))
-    #上記と同じように月間のコメント数の多いランキングを表示する
+    #上記と同じように月間のコメント数の多い順で表示する
     @month_post_comment_ranks = Post.find(Comment.group(:post_id).where(created_at: Time.current.all_month).order("count(user_id) DESC").limit(3).pluck(:user_id))
     @tag_lists = Tag.all
   end

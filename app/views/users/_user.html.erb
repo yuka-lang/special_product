@@ -4,9 +4,9 @@
   <p>フォロー: <%= user.followings.count %></p>
   <p>フォロワー: <%= user.followers.count %></p>
   <% if user.id == current_user.id %>
-    <botton><%= link_to "プロフィール編集", edit_user_path(user), class: "btn btn-outline-primary fas fa-cog" %></botton>
-    <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
+    <p><botton><%= link_to "プロフィール編集", edit_user_path(user), class: "btn btn-outline-primary fas fa-cog" %></botton></p>
     <p><i class="fas fa-bookmark"></i><%= link_to " ブックマーク一覧", bookmarks_posts_path %></p>
+    <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
   <% else %>
    <!--フォロー,フォロワー機能-->
       <% if current_user.following?(user) %>

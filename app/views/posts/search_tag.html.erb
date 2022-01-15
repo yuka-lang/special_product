@@ -1,21 +1,21 @@
 <div class="container">
   <div class="row text-center">
     <div class="col-md-8 mx-auto text-center">
-      <h5 class="border-bottom"><i class="fas fa-tag"></i><%= @tag.name %>の投稿カテゴリー</h5>
+      <h5 class="border-bottom"><i class="fas fa-tag text-success"></i><%= @tag.name %>の投稿カテゴリー</h5>
        <div class="row">
         <% @posts.each do |post| %>
           <!--投稿はカードで囲む-->
-          <div class="p-3 mx-auto">
+          <div class="pt-4 mx-auto">
             <div class="card-md-3">
               <div class="card pt-3 px-3" style="width: 18rem;">
+                <p class="text-right"><i class="fas fa-heart text-danger"></i>️️<%= post.favorites.count %></p>
                 <p class="card-img-top">
                   <%= link_to post_path(post.id) do %>
                     <%= attachment_image_tag post, :image, :fill, 220, 150, format: 'jpeg', fallback: "no_image.jpg" %>
                 </p>
                     <p class="card-title"><%= post.title %></p>
                   <% end %>
-                    <p class="ml-5">❤️️<%= post.favorites.count %></p>
-                    <i class="fas fa-tag">
+                    <i class="fas fa-tag text-success">
                   <% post.tags.each do |tag| %>
                     <%= link_to tag.name,search_tag_path(tag_id: tag.id)  %>
                     <%= "(#{tag.posts.count})" %>
@@ -27,8 +27,7 @@
         <% end %>
       </div>
       </div>
-    <div class="col-3">
-      <h4>サイドバー</h4>
+    <div class="col-3 py-5">
         <!--タグ一覧表示-->
         <%= render "posts/sidebar", tag_lists: @tag_lists, week_post_favorite_ranks: @week_post_favorite_ranks, month_post_comment_ranks: @month_post_comment_ranks %>
     </div>

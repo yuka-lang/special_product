@@ -18,16 +18,18 @@
             <% @posts.each do |post| %>
               <div class="p-3 mx-auto">
                 <div class="card p-4 " style="width: 18rem;">
+                    <!--いいねカウント数-->
+                  <span class="text-right"><i class="fas fa-heart text-danger"></i>️️<%= post.favorites.count %></span>
+
                   <p class="card-img-top">
                     <%= link_to post_path(post.id) do %>
                       <%= attachment_image_tag post, :image, :fill, 220, 150, format: 'jpeg', fallback: "no_image.jpg" %>
                   </p>
-                  <p class="card-title"><%= post.title %></p>
+                  <p class="card-title text-body"><%= post.title %></p>
                     <% end %>
-                  <!--いいねカウント数-->
-                  <span class="ml-5">❤️️<%= post.favorites.count %></span>
+
                   <!--投稿一覧画面で投稿に紐づくタグを表示-->
-                  <i class="fas fa-tag">
+                  <i><span class="fas fa-tag text-success"></span>
                     <% post.tags.each do |tag| %>
                       <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>
                       <%="(#{tag.posts.count})" %>
@@ -42,11 +44,10 @@
           </div>
           <div class="pagination justify-content-center"><%= paginate @posts %></div>
         <% else %>
-          <h3>投稿がありません</h3>
+          <h3>投稿がありません...</h3>
         <% end %>
       </div>
-      <div class="col-3">
-        <h4>サイドバー</h4>
+      <div class="col-3 py-5">
           <!--タグ一覧表示-->
           <%= render "posts/sidebar", tag_lists: @tag_lists, week_post_favorite_ranks: @week_post_favorite_ranks, month_post_comment_ranks: @month_post_comment_ranks %>
       </div>
