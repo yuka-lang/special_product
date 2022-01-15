@@ -14,4 +14,7 @@
       <% else %>
         <%= link_to "フォローする", user_relationships_path(user.id), method: :post %>
       <% end %>
+
+        <%= link_to "Begin Chat", chat_path(user.id) %>
+
   <% end %>

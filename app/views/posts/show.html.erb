@@ -22,7 +22,7 @@
           <% end %>
 
           <% if user_signed_in? %>
-          <div>
+          <div class="py-3">
             <!--いいね機能の部分テンプレート-->
             <p id="favorites_buttons_<%= @post.id %>">
         　　  　<%= render "favorites/favorite", post: @post %>

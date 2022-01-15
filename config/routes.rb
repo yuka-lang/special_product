@@ -2,8 +2,6 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'posts#index'
 
-  # #タグの検索
-  # get 'search' => 'posts#search'
   # 検索機能のルーティング
   get 'search_tag/:tag_id'=>'posts#search_tag', as: 'search_tag'
   # DM機能のルーティング
