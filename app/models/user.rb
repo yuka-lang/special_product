@@ -5,8 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true, uniqueness: true
-  validates :email, presence: true
-  validates :password, presence: true
 
   # 投稿用のアソシエーション
   has_many :posts, dependent: :destroy
