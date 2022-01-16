@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @users = User.all.order(created_at: :desc)
@@ -21,7 +22,6 @@ class UsersController < ApplicationController
     else
       flash[:alert] = "更新に失敗しました...もう一度入力してください。"
       redirect_to request.referer
-
     end
   end
 
