@@ -1,3 +1,5 @@
-$("#comments_area").html("<%= j(render 'comments/comment', post: @post, comment: @comment) %>");
-$("textarea").val('');
-<!--↑送信後のフォームを空にする-->
+document.addEventListener("turbolinks:load", function () {
+  $("#comments_area").html("<%= j(render 'comments/comment', post: @post, comment: @comment) %>");
+  <!--送信後のフォームを空にする-->
+  $("textarea").val('');
+});

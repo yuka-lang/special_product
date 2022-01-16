@@ -4,6 +4,8 @@
 
     <!--ログイン入力フォーム-->
     <%= form_with model: @user, url: user_session_path, local: true do |f| %>
+     <!--バリデーションエラーメッセージ-->
+        <%= render 'layouts/error_messages', model: f.object %>
 
       <div class= "mt-2">
         <%= f.label :email , "メールアドレス" %><br />

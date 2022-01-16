@@ -10,3 +10,11 @@ ja:
         introduction: 紹介文
         word: ひと言文
         prefectures: 都道府県
+
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード

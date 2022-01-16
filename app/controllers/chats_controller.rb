@@ -3,11 +3,16 @@ class ChatsController < ApplicationController
   def show
     @user = User.find(params[:id])
     rooms = current_user.user_rooms.pluck(:room_id)
+    # 相手のroom_idをuser_roomカラムから探し配列で取りだす
     user_rooms = UserRoom.find_by(user_id: @user.id, room_id: rooms)
+    # 自分と相手のユーザールーム(チャットの存在)をさがす
 
+     # メッセージが存在する場合
     if user_rooms.nil?
      @room = Room.new
      @room.save
+    # 2人のユーザールームを作る
+    # 自分と相手のuserroomモデルにレコードを保存
      UserRoom.create(user_id: @user.id, room_id: @room.id)
      UserRoom.create(user_id: current_user.id, room_id: @room.id)
     else
@@ -27,6 +32,7 @@ class ChatsController < ApplicationController
 
   def chat_params
     params.require(:chat).permit(:message, :room_id)
+    # hidden_fieldでのroom_idを受け取る
   end
 
 end

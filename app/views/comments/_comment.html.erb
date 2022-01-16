@@ -8,7 +8,7 @@
           <%= comment.comment_content %></br>
           <%= comment.created_at.strftime('%Y/%m/%d') %>
           <% if comment.user == current_user %>
-            <span><%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-muted ml-2 mt-1 border" %></span>
+            <span><%= link_to "削除", post_comment_path(comment.post, comment), method: :delete, remote: true, data: {"turbolinks" => false}, class: "btn btn-muted ml-2 mt-1 border" %></span>
           <% end %>
         </div>
     <% end %>
