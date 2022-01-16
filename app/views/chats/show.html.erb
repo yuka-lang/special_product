@@ -2,36 +2,10 @@
     <div class="row">
         <div class="col-md-8 mx-auto">
             <h4><%= @user.name %>さんに<i class="far fa-envelope"></i></h4>
-            <table class="message table">
-              <% @chats.each do |chat| %>
-                <% if chat.user_id == current_user.id %>
-                <tbody>
-                  <tr>
-                    <th>
-                      <p style="text-align: left;">
-                        <p class="text-center"><%= chat.message %></p>
-                        <p class="text-left"><%= link_to attachment_image_tag(chat.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", size:'80x80', class:"profile-image align-top"), user_path(chat.user) %></p>
-                        <p class="text-left"><%= chat.user.name %></p>
-                        <p class="text-left"><%= l chat.created_at %></p>
-                      </p>
-                    </th>
-                  </tr>
-                <% else %>
-                  <tr>
-                    <th></th>
-                    <th>
-                      <p style="text-align: right;">
-                        <p class="text-center"><%= chat.message %></p>
-                        <p class="text-right"><%= link_to attachment_image_tag(chat.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", size:'80x80', class:"profile-image align-top"), user_path(chat.user) %></p>
-                        <p class="text-right"><%= chat.user.name %></p>
-                        <!--投稿日時を表示する-->
-                        <p class="text-right"><%= l chat.created_at %></p>
-                      </p>
-                    </th>
-                  </tr>
+            <table class="table">
+                <tbody class="message">
+                  <%= render "chats/chat", chats: @chats %>
                 </tbody>
-                <% end %>
-              <% end %>
             </table>
             <!--メッセージのフォーム-->
             <%= form_with model: @chat, remote: true do |f| %>

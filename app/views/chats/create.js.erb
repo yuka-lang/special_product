@@ -1,4 +1,2 @@
-<!--appendメソッドで要素を追加する-->
-$('.message').append("<p style='text-align: left;'><%= @chat.message %></p>");
-<!--送信後のフォームを空にする-->
+$(".message").html("<%= j(render 'chats/chat', { chats: @chats }) %>")
 $('input[type=text]').val("")
