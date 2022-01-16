@@ -16,8 +16,13 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
+    if @user.update(user_params)
      redirect_to user_path(@user.id)
+    else
+      flash[:alert] = "更新に失敗しました...もう一度入力してください。"
+      redirect_to request.referer
+
+    end
   end
 
   private

@@ -9,7 +9,6 @@ ja:
       truncate: "..."
 
 # 投稿日時のデフォルトを変更
-ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M:%S"

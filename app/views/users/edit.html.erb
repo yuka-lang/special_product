@@ -11,6 +11,8 @@
 
       <%= form_with model:@user, local:true do |f| %>
 
+       <p class="text-danger"><%= flash[:alert] %></p>
+
         <div class="row form-group pt-3">
           <div class="col-4">名前</div>
           <div><%= f.text_field :name, class:"form-control" %></div>
