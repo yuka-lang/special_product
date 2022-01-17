@@ -59,10 +59,24 @@ document.addEventListener("turbolinks:load", function () {
  });
 
 
-// ファイル選択時の画像表示
+// ファイル選択時の画像表示(投稿編集)
 document.addEventListener("turbolinks:load", function() {
   $(function(){
       $('#post_image').on('change', function (e) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+          $("#preview").attr('src', e.target.result);
+      }
+      reader.readAsDataURL(e.target.files[0]); //取得したurlにアップロード画像のurlを挿入
+  });
+  });
+})
+
+
+// ファイル選択時の画像表示(会員編集)
+document.addEventListener("turbolinks:load", function() {
+  $(function(){
+      $('#user_profile_image').on('change', function (e) {
       var reader = new FileReader();
       reader.onload = function (e) {
           $("#preview").attr('src', e.target.result);
