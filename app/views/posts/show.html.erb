@@ -66,10 +66,10 @@
         <h5><i class="fas fa-tag text-success"></i>人気のタグはこちら</h5>
         <!--タグ一覧-->
         <% @tag_lists.each do |list| %>
-            <% if list.posts.count != 0 %>
+            <% if list.count != 0 %>
               <button class=" border border-secondary ml-2 mt-1 text-dark" disabled>
-                <%=link_to list.name,search_tag_path(tag_id: list.id) %>
-                <%="(#{list.posts.count})" %></botton>
+                <%=link_to list.tag.name, search_tag_path(tag_id: list.tag.id) %>
+                <%="(#{list.count})" %></botton>
             <% end %>
           <% end %>
       </div>

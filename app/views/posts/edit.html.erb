@@ -63,8 +63,28 @@
 
           <div class="row form-group pt-3">
             <div class="col-4">タグ付け<br />(複数可能' , 'で区切ってください)</div>
-            <div><%= f.text_area :names, :size=>"50x2", class:"form-control", value: @tag_list %></div>
+
+
+            <!--タグのチェックボックス-->
+          <div class="form-group pt-3">
+            <%= f.collection_check_boxes(:tag_ids, @top, :first, :last) do |tag| %>
+              <div class="form-check">
+                <%= tag.label class: "form-check-label" do %>
+                  <%= tag.check_box class: "form-check-input" %>
+                  <%= tag.text %>
+                <% end %>
+              </div>
+            <% end %>
           </div>
+
+          </div>
+
+
+          <div class="row form-group pt-3">
+            <div class="col-4"></div>
+              <div><%= f.text_field :names, :size=>"50x2", class:"form-control", value: @tag_list %></div>
+          </div>
+
 
         <%= f.submit "保存" %>
       <% end %>
@@ -74,10 +94,10 @@
         <h5><i class="fas fa-tag text-success"></i>人気のタグはこちら</h5>
         <!--タグ一覧-->
         <% @tag_lists.each do |list| %>
-            <% if list.posts.count != 0 %>
+            <% if list.count != 0 %>
               <button class=" border border-secondary ml-2 mt-1 text-dark" disabled>
-                <%=link_to list.name,search_tag_path(tag_id: list.id) %>
-                <%="(#{list.posts.count})" %></botton>
+                <%=link_to list.tag.name, search_tag_path(tag_id: list.tag.id) %>
+                <%="(#{list.count})" %></botton>
             <% end %>
           <% end %>
       </div>
