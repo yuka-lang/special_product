@@ -49,6 +49,7 @@ class PostsController < ApplicationController
     tag_list = params[:post][:names].split(',')
     if @post.update(post_params)
        @post.save_tag(tag_list)
+       flash[:notice] = '更新に成功しました！'
       redirect_to post_path(@post)
     else
       render :edit

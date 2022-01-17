@@ -14,7 +14,23 @@
 
           <div class="row form-group pt-3">
             <div class="col-4">投稿画像</div>
-            <div><%= f.attachment_field :image %></div>
+            <div class="row">
+              <p class="col-12 text-left"><変更前></p>
+              <span class="col-3"><%= attachment_image_tag @post, :image, :fill, 150, 100, format: 'jpeg', fallback: "no_image.jpg" %></span>
+            </div>
+          </div>
+
+         <div class="row form-group pt-3">
+            <div class="col-4"></div>
+            <div class="row">
+              <p class="col-12 text-left"><変更後></p>
+              <span class="col-3"><%= f.attachment_field :image, placeholder: "画像" %></span>
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-4"></div>
+            <p class="col-4"><img id="preview" style="width:100%;"></p>
           </div>
 
           <div class="row form-group pt-3">
