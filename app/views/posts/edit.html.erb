@@ -79,19 +79,17 @@
 
           </div>
 
-
           <div class="row form-group pt-3">
             <div class="col-4"></div>
               <div><%= f.text_field :names, :size=>"50x2", class:"form-control", value: @tag_list %></div>
           </div>
-
 
         <%= f.submit "保存" %>
       <% end %>
     </div>
     <div class="col-md-3 text-center">
       <div class="text-body border border-secondary py-3">
-        <h5><i class="fas fa-tag text-success"></i>人気のタグはこちら</h5>
+        <h5><i class="fas fa-tag text-success"></i>人気のタグはこちら</br>~top5~</h5>
         <!--タグ一覧-->
         <% @tag_lists.each do |list| %>
             <% if list.count != 0 %>

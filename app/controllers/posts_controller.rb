@@ -6,11 +6,11 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
 
-
     tag_tops = PostTag.joins(:tag).group(:tag_id).select("tag_id, count(tag_id) AS count, tags.name").order("count desc").limit(5)
 
-    @top = []
+    @top = []  #空の配列を作る
     tag_tops.each do |tag_top|
+      # idとタグ名を配列に足していく
       @top.push([tag_top.tag.id, tag_top.tag.name])
     end
   end
@@ -43,20 +43,24 @@ class PostsController < ApplicationController
     @comments = @post.comments.all
     @post_tags = @post.tags
     @user = current_user
-
   end
 
   def edit
     @post = Post.find(params[:id])
-    @tag_list = @post.tags.pluck(:name) # .join(',')
+    @tag_list = @post.tags.pluck(:name)
+    # 名前を配列で返す
 
-
-    tag_tops = PostTag.joins(:tag).group(:tag_id).select("tag_id, count(tag_id) AS count, tags.name").order("count desc").limit(5)
+    tag_tops = PostTag.joins(:tag)
+                      .group(:tag_id)
+                      .select("tag_id, count(tag_id) AS count, tags.name")
+                      .order("count desc")
+                      .limit(5)
 
     @top = []
     top_for_edit = []
     tag_tops.each do |tag_top|
       @top.push([tag_top.tag.id, tag_top.tag.name])
+      # idと名前を配列に足していく
       top_for_edit.push(tag_top.tag.name)
     end
 
@@ -118,7 +122,7 @@ class PostsController < ApplicationController
     @week_post_favorite_ranks = Post.find(
       Favorite.group(:post_id)
               .where(created_at: Time.current.all_week)
-              .order("count(post_id) DESC")
+              .order("count(post_id) desc")
               .limit(3)
               .pluck(:post_id)
     )
@@ -127,11 +131,12 @@ class PostsController < ApplicationController
     @month_post_comment_ranks = Post.find(
       Comment.group(:post_id)
             .where(created_at: Time.current.all_month)
-            .order("count(user_id) DESC")
+            .order("count(user_id) desc")
             .limit(3)
             .pluck(:post_id)
     )
   end
+
 
   private
 
