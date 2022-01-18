@@ -52,23 +52,23 @@
           </div>
 
           <div class="row form-group pt-3">
-            <div class="col-4">タグ付け<br />(複数可能' , 'で区切ってください)</div>
-
-          <!--タグのチェックボックス-->
-          <div class="form-group pt-3">
-            <%= f.collection_check_boxes(:tag_ids, @top, :first, :last) do |tag| %>
-              <div class="form-check">
-                <%= tag.label class: "form-check-label" do %>
-                  <%= tag.check_box class: "form-check-input" %>
-                  <%= tag.text %>
-                <% end %>
-              </div>
-            <% end %>
+            <div class="col-4">タグ付け(複数可能)</div>
+            <!--タグのチェックボックス-->
+            <div class="row form-group pl-3">
+              <%= f.collection_check_boxes(:tag_ids, @top, :first, :last) do |tag| %>
+                <span class="form-check pr-2 pt-3">
+                  <%= tag.label class: "form-check-label" do %>
+                    <%= tag.check_box class: "form-check-input" %>
+                    <%= tag.text %>
+                  <% end %>
+                </span>
+              <% end %>
+            </div>
           </div>
 
-            <div class=”field”>
-            </div>
-            <div><%= f.text_field :names, :size=>"50x2", class:"form-control" %></div>
+          <div class="row form-group pt-3">
+            <div class="col-4">その他の追加</div>
+            <div><%= f.text_field :names, :size=>"50x2", class:"form-control", :placeholder => "' , 'で区切ってください" %></div>
           </div>
 
         <%= f.submit "登録" %>
@@ -77,7 +77,7 @@
       </div>
       <div class="col-md-3 text-center">
         <div class="text-body border border-secondary py-3">
-          <h5><i class="fas fa-tag text-success"></i>人気のタグはこちら</h5>
+          <h5><i class="fas fa-tag text-success"></i>人気のタグはこちら</br>~top5~</h5>
           <!--タグ一覧-->
         <% @tag_lists.each do |list| %>
             <% if list.count != 0 %>
