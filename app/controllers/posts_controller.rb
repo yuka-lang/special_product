@@ -2,6 +2,8 @@ class PostsController < ApplicationController
 
   before_action :sidebar
   before_action :ranking, only: [:index, :search, :search_tag]
+  before_action :set_edit_tags, only: [:edit, :update]
+  before_action :set_new_tags, only: [:new, :create]
 
   def new
     @post = Post.new
@@ -148,6 +150,48 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :image, :prefectures, :season, :word, :introduction, tag_ids: [])
+  end
+
+  # 編集時のbefore_actionのメソッド
+  def set_edit_tags
+    @post = Post.find(params[:id])
+    @tag_list = @post.tags.pluck(:name)
+    # 名前を配列で返す
+
+    tag_tops = PostTag.joins(:tag)
+                      .group(:tag_id)
+                      .select("tag_id, count(tag_id) AS count, tags.name")
+                      .order("count desc")
+                      .limit(5)
+
+    @top = []
+    top_for_edit = []
+    tag_tops.each do |tag_top|
+      @top.push([tag_top.tag.id, tag_top.tag.name])
+      # idと名前を配列に足していく
+      top_for_edit.push(tag_top.tag.name)
+    end
+
+    @tag_list = (@tag_list - top_for_edit).join(',')
+    #チェックボックス以外のタグをフォームに表示する
+  end
+  
+  
+  # 保存時のbefore_actionのメソッド
+  def set_new_tags
+    @post = Post.new
+
+    tag_tops = PostTag.joins(:tag)
+                      .group(:tag_id)
+                      .select("tag_id, count(tag_id) AS count, tags.name")
+                      .order("count desc")
+                      .limit(5)
+
+    @top = []  #空の配列を作る
+    tag_tops.each do |tag_top|
+      # idとタグ名を配列に足していく
+      @top.push([tag_top.tag.id, tag_top.tag.name])
+    end
   end
 
 end

@@ -25,12 +25,12 @@
 
           <div class="row form-group pt-3">
             <div class="col-4">タイトル</div>
-            <div><%= f.text_area :title, :size=>"50x2", class:"form-control" %></div>
+            <div><%= f.text_area :title, :size=>"50x2", class:"form-control"%></div>
           </div>
 
           <div class="row form-group pt-3">
             <div class="col-4">都道府県</div>
-            <div><%= f.text_field :prefectures, class:"form-control" %></div>
+            <div><%= f.text_field :prefectures, class:"form-control"%></div>
           </div>
 
           <div class="row form-group pt-3">
@@ -43,17 +43,16 @@
 
           <div class="row form-group pt-3">
             <div class="col-4">紹介文</div>
-            <div><%= f.text_area :introduction, :size=>"50x10", class:"form-control" %></div>
+            <div><%= f.text_area :introduction, :size=>"50x10", class:"form-control"%></div>
           </div>
 
           <div class="row form-group pt-3">
             <div class="col-4">ひと言文</div>
-            <div><%= f.text_area :word, :size=>"50x2", class:"form-control" %></div>
+            <div><%= f.text_area :word, :size=>"50x2", class:"form-control"%></div>
           </div>
 
           <div class="row form-group pt-3">
             <div class="col-4">タグ付け(複数可能)</div>
-            <!--タグのチェックボックス-->
             <div class="row form-group pl-3">
               <%= f.collection_check_boxes(:tag_ids, @top, :first, :last) do |tag| %>
                 <span class="form-check pr-2 pt-3">
