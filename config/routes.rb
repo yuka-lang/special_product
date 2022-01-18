@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'search_tag/:tag_id'=>'posts#search_tag', as: 'search_tag'
   # DM機能のルーティング
   get 'chat/:id', to: 'chats#show', as: 'chat'
-  resources :chats, only: [:create, :show]
+  resources :chats, only: [:create, :show, :index]
 
   resources :users, only: [:index, :show, :edit, :update] do
     resource :relationships, only: [:create, :destroy]

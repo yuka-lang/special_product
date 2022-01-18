@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h4><%= @user.name %>さんに<i class="far fa-envelope"></i></h4>
+            <table class="table">
+                <tbody class="message">
+                  <%= render "chats/chat", chats: @chats %>
+                </tbody>
+            </table>
+            <!--メッセージのフォーム-->
+            <%= form_with model: @chat, remote: true do |f| %>
+              <%= f.text_area :message, placeholder: "メッセージを送る", :size=>"30x2", class:"form-control" %>
+              <%= f.hidden_field :user_id, :value => params[:user_id] %>
+              <P class="text-center"><%= f.submit "送信", class:"btn btn-sm btn-success" %></P>
+            <% end %>
+        </div>
+    </div>
+</div>

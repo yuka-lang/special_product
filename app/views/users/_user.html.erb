@@ -14,5 +14,5 @@
       <% else %>
         <p><%= link_to "フォローする", user_relationships_path(user.id), method: :post %></p>
       <% end %>
-        <p><i class="far fa-envelope"></i><%= link_to " メッセージを送る", chat_path(user.id) %></p>
+        <p><i class="far fa-envelope"></i><%= link_to " メッセージを送る", chats_path(user_id: user.id) %></p>
    <% end %>

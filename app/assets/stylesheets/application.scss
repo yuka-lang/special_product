@@ -15,20 +15,6 @@
  */
  @import "bootstrap";
 
- //.card {
-	// 	max-width: 350px;
-	// 	padding: 40px 40px;
-	// 	background-color: #F7F7F7;
-	// 	margin: 0 auto 25px;
-	// 	margin-top: 50px;
-	// 	-moz-border-radius: 2px;
-	// 	-webkit-border-radius: 2px;
-	// 	border-radius: 2px;
-	// 	-moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-	// 	-webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-	// 	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-	// 	}
-
 	.card {
 		max-width: 350px;
 		background-color: #F7F7F7;
@@ -96,5 +82,17 @@
 
 h5.font {
 	font-family:serif;
+}
 
+
+.notice {
+  background-color: #E0FFFF;
+  color: #white;
+  text-align: center;
+}
+
+.alert {
+  background-color: #FFE4E1;
+  color: #white;
+  text-align: center;
 }

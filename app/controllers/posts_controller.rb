@@ -6,7 +6,11 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
 
-    tag_tops = PostTag.joins(:tag).group(:tag_id).select("tag_id, count(tag_id) AS count, tags.name").order("count desc").limit(5)
+    tag_tops = PostTag.joins(:tag)
+                      .group(:tag_id)
+                      .select("tag_id, count(tag_id) AS count, tags.name")
+                      .order("count desc")
+                      .limit(5)
 
     @top = []  #空の配列を作る
     tag_tops.each do |tag_top|
@@ -65,6 +69,7 @@ class PostsController < ApplicationController
     end
 
     @tag_list = (@tag_list - top_for_edit).join(',')
+    #チェックボックス以外のタグをフォームに表示する
 
   end
 
@@ -72,6 +77,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     tag_list = params[:post][:names].split(',')
     if @post.update(post_params)
+      # byebug
       @post.save_tag(tag_list)
       params[:post][:tag_ids].each do |tag_id|
         PostTag.create(post_id: @post.id, tag_id: tag_id)

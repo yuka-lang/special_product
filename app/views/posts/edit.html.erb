@@ -62,10 +62,10 @@
           </div>
 
           <div class="row form-group pt-3">
-              <div class="col-4">タグ付け(複数可能)</div>
+              <div class="col-4">タグ付け<br />(複数可能)</div>
               <!--タグのチェックボックス-->
               <div class="row form-group pl-3">
-                <%= f.collection_check_boxes(:tag_ids, @top, :first, :last) do |tag| %>
+                <%= f.collection_check_boxes(:tag_ids, @top, :first, :last) do |tag| %>  <!--first=ID, last=name-->
                   <span class="form-check pr-2 pt-3">
                     <%= tag.label class: "form-check-label" do %>
                       <%= tag.check_box class: "form-check-input" %>
@@ -77,7 +77,7 @@
             </div>
 
           <div class="row form-group pt-3">
-            <div class="col-4">その他の追加</div>
+            <div class="col-4">その他の追加<br />(' , 'で区切ってください)</div>
               <div><%= f.text_field :names, :size=>"50x2", class:"form-control", value: @tag_list, :placeholder => "' , 'で区切ってください" %></div>
           </div>
 
