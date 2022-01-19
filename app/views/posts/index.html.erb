@@ -28,8 +28,10 @@
                   <span class="text-right"><i class="fas fa-heart text-danger"></i>️️<%= post.favorites.count %></span>
 
                   <p class="card-img-top">
+                  <div class="img_side">
                     <%= link_to post_path(post.id) do %>
-                      <%= attachment_image_tag post, :image, :fill, 220, 150, format: 'jpeg', fallback: "no_image.jpg" %>
+                      <%= attachment_image_tag post, :image, :fill, 220, 160, format: 'jpeg', fallback: "no_image.jpg" %>
+                  </div>
                   </p>
                   <p class="card-title text-body"><%= post.title %></p>
                     <% end %>

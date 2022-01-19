@@ -34,6 +34,7 @@ class PostsController < ApplicationController
         PostTag.create(post_id: @post.id, tag_id: tag_id)
       end
       redirect_to post_path(@post.id)
+      flash[:notice] = "保存に成功しました！"
     else
       render :new
     end
@@ -175,8 +176,8 @@ class PostsController < ApplicationController
     @tag_list = (@tag_list - top_for_edit).join(',')
     #チェックボックス以外のタグをフォームに表示する
   end
-  
-  
+
+
   # 保存時のbefore_actionのメソッド
   def set_new_tags
     @post = Post.new

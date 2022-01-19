@@ -14,9 +14,11 @@
       <h5 class="font-weight-bold pt-3">今月のおすすめ投稿</h5>
         <!--コメントの多い順位(1位から順に)一覧を表示する-->
         <% month_post_comment_ranks.each.with_index(1) do |post, i| %>
-         <p>第<%= i %>位</p>
+        <p>第<%= i %>位</p>
+        <div class="img_side">
         <%= link_to post_path(post.id) do %>
-          <%= attachment_image_tag post, :image, :fill, 220, 150, format: 'jpeg', fallback: "no_image.jpg" %>
+          <%= attachment_image_tag post, :image, :fill, 220, 160, format: 'jpeg', fallback: "no_image.jpg" %>
+        </div>
       <p class="card-title text-body"><%= post.title %></p>
         <% end %>
       <!--いいねカウント数-->
@@ -38,9 +40,11 @@
       <h4 class="font-weight-bold"><i class="fas fa-crown text-warning"></i> 今週の人気投稿</br>ランキング</h4>
         <!--ランキングと順位(1位から順に)一覧を表示する-->
         <% week_post_favorite_ranks.each.with_index(1) do |post, i| %>
-         <p>第<%= i %>位</p>
+        <p>第<%= i %>位</p>
+        <div class="img_side">
         <%= link_to post_path(post.id) do %>
-          <%= attachment_image_tag post, :image, :fill, 220, 150, format: 'jpeg', fallback: "no_image.jpg" %>
+          <%= attachment_image_tag post, :image, :fill, 220, 160, format: 'jpeg', fallback: "no_image.jpg" %>
+        </div>
       <p class="card-title text-body"><%= post.title %></p>
         <% end %>
       <!--いいねカウント数-->

@@ -12,11 +12,13 @@
            <!--投稿一覧を表示-->
             <% @bookmarks.each do |bookmark| %>
               <div class="col-md-6">
-                <%= link_to post_path(bookmark.post.id) do %>
+                <div class="img_wrap">
+                  <%= link_to post_path(bookmark.post.id) do %>
                     <%= attachment_image_tag bookmark.post, :image, :fill, 250, 150, format: 'jpeg', fallback: "no_image.jpg" %>
                    <% end %>
+                </div>
                      <%= link_to post_path(bookmark.post) do %>
-                      <p class="px-5 text-body"><%= bookmark.post.title %></p>
+                      <p class="px-5 pt-4 text-body"><%= bookmark.post.title %></p>
                      <% end %>
               </div>
             <% end %>

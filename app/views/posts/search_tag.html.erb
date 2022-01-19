@@ -8,10 +8,12 @@
           <div class="pt-4 mx-auto">
             <div class="card-md-3">
               <div class="card p-4" style="width: 18rem;">
-                <p class="text-right"><i class="fas fa-heart text-danger"></i>️️<%= post.favorites.count %></p>
+                <span class="text-right"><i class="fas fa-heart text-danger"></i>️️<%= post.favorites.count %></span>
                 <p class="card-img-top">
-                  <%= link_to post_path(post.id) do %>
-                    <%= attachment_image_tag post, :image, :fill, 220, 150, format: 'jpeg', fallback: "no_image.jpg" %>
+                  <div class="img_side">
+                    <%= link_to post_path(post.id) do %>
+                      <%= attachment_image_tag post, :image, :fill, 220, 160, format: 'jpeg', fallback: "no_image.jpg" %>
+                  </div>
                 </p>
                     <p class="card-title text-body"><%= post.title %></p>
                   <% end %>
