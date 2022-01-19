@@ -5,8 +5,8 @@
       <p style="text-align: left;">
         <p class="text-center"><%= chat.message %></p>
         <p class="text-left"><%= link_to attachment_image_tag(chat.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", size:'80x80', class:"profile-image align-top"), user_path(chat.user) %></p>
-        <p class="text-left"><%= chat.user.name %></p>
-        <p class="text-left"><%= l chat.created_at %></p>
+        <p class="text-left"><%= chat.user.name %>
+        <span class="pl-2"><%= l chat.created_at, format: :short %></p>
       </p>
     </th>
     <th></th>
@@ -18,9 +18,9 @@
       <p style="text-align: right;">
         <p class="text-center"><%= chat.message %></p>
         <p class="text-right"><%= link_to attachment_image_tag(chat.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", size:'80x80', class:"profile-image align-top"), user_path(chat.user) %></p>
-        <p class="text-right"><%= chat.user.name %></p>
+        <p class="text-right"><%= chat.user.name %>
         <!--投稿日時を表示する-->
-        <p class="text-right"><%= l chat.created_at %></p>
+        <span class="pl-2"><%= l chat.created_at, format: :short %></p>
       </p>
     </th>
   </tr>
