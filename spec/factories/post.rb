@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :post do
-    title { Faker::Name.name }
+    association :user
+    title { Faker::Lorem.characters(number: 5) }
     # タイトルのダミーデータ。名前を１０字作成する
     introduction { Faker::Lorem.characters(number:30) }
     # 紹介文のダミーデータ。ランダムな英数文字列を30字作成する
@@ -10,7 +11,7 @@ FactoryBot.define do
     #投稿画像のダミーデータ
     season { Faker::Lorem.characters(number:2) }
     #季節のダミーデータ
-    evalution { Faker::Lorem.characters(number:5) }
+    prefectures { Faker::Lorem.characters(number:5) }
     #都道府県のダミーデータ
   end
 end
