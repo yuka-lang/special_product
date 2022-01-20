@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :user do
-    # name { Faker::Name.name }
     name { Faker::Name.name }
     email { Faker::Internet.email }
     # ダミーデータ。emailアドレスの形を指定
