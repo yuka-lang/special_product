@@ -4,5 +4,6 @@ FactoryBot.define do
     email { Faker::Internet.email }
     # ダミーデータ。emailアドレスの形を指定
     password { Faker::Lorem.characters(number: 8) }
+    introduction { Faker::Lorem.characters(number: 10) }
   end
 end
