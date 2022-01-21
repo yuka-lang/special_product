@@ -1,9 +1,8 @@
 class ChatsController < ApplicationController
-
   def index
     @user = User.find(params[:user_id])
-    @chats = Chat.where(user_id: @user.id, sender: current_user.id)
-                  .or(Chat.where(user_id: current_user.id, sender: @user.id))
+    @chats = Chat.where(user_id: @user.id, sender: current_user.id).
+      or(Chat.where(user_id: current_user.id, sender: @user.id))
     @chat = Chat.new
   end
 
@@ -27,14 +26,14 @@ class ChatsController < ApplicationController
   end
 
   def create
-   @chat = current_user.chats.new(chat_params)
+    @chat = current_user.chats.new(chat_params)
     # @chat.save
     @chat = Chat.new(chat_params)
     @user = User.find(params[:chat][:user_id])
     @chat.user_id = current_user.id
     @chat.sender = @user.id
-    @chats = Chat.where(user_id: @user.id, sender: current_user.id)
-                  .or(Chat.where(user_id: current_user.id, sender: @user.id))
+    @chats = Chat.where(user_id: @user.id, sender: current_user.id).
+      or(Chat.where(user_id: current_user.id, sender: @user.id))
     @chat.save
   end
 
@@ -44,5 +43,4 @@ class ChatsController < ApplicationController
     params.require(:chat).permit(:message, :room_id)
     # hidden_fieldでのroom_idを受け取る
   end
-
 end

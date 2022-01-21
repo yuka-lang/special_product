@@ -1,5 +1,4 @@
 class Post < ApplicationRecord
-
   belongs_to :user
 
   # 画像投稿用
@@ -42,15 +41,15 @@ class Post < ApplicationRecord
   # タグ付けのメソッドを定義
   def save_tag(tag_list)
     # すでにタグ登録していた場合、紐ずくタグの削除
-    if self.tags != nil
-      post_tags_records = PostTag.where(post_id: self.id)
+    if !tags.nil?
+      post_tags_records = PostTag.where(post_id: id)
       post_tags_records.destroy_all
     end
 
     tag_list.each do |tag|
       # 既にタグが保存されていればレコードを取得し、されてなければ保存する
       inspected_tag = Tag.where(name: tag).first_or_create
-      self.tags << inspected_tag
+      tags << inspected_tag
     end
   end
 
@@ -62,5 +61,4 @@ class Post < ApplicationRecord
       all
     end
   end
-
 end

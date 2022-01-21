@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'posts#index'
 
   # 検索機能のルーティング
-  get 'search_tag/:tag_id'=>'posts#search_tag', as: 'search_tag'
+  get 'search_tag/:tag_id' => 'posts#search_tag', as: 'search_tag'
   # DM機能のルーティング
   get 'chat/:id', to: 'chats#show', as: 'chat'
   resources :chats, only: [:create, :show, :index]
@@ -24,5 +24,4 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-
 end
