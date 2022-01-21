@@ -1,2 +1,35 @@
-<h1>Relationships#followings</h1>
-<p>Find me in app/views/relationships/followings.html.erb</p>
+<div class= "container">
+   <p class="text-success pl-5"></p>
+  <div class= "row px-4">
+    <div class = "col-md-3">
+      <div class="border border-dark text-center pb-4">
+        <%= render "users/user", user: @user %>
+      </div>
+    </div>
+
+    <div class="col-md-9 text-center">
+      <h5 class="text-left"><i class="fas fa-user"></i> <%= @user.name %>さんのフォロー一覧</h5>
+        <table class="table">
+          <thead>
+            <tr class="border-bottom">
+              <th>プロフィール画像</th>
+              <th>氏名</th>
+              <th>紹介文</th>
+            </tr>
+          </thead>
+          <tbody>
+              <% @users.each do |user| %>
+                <tr>
+                <td><%= link_to user_path(user.id) do %>
+                  <%= attachment_image_tag user, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+                <% end %></td>
+                  <td><%= user.name %></td>
+                  <td><%= simple_format(user.introduction) %></td>
+                </tr>
+              <% end %>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>
+

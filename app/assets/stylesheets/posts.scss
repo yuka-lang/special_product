@@ -6,19 +6,19 @@
   border-radius: 20px;
 }
 
-.img_side{
+.img_side {
   border: 1px solid #ddd;
   width: 230px;
   height: 160px;
   margin: 0 auto;
   overflow: hidden;
 }
-.img_side img{
+.img_side img {
   width: 100%;
   cursor: pointer;
   transition-duration: 0.3s;
 }
-.img_side:hover img{
+.img_side:hover img {
   opacity: 0.6;
   transition-duration: 0.3s;
 }

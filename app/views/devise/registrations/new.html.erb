@@ -8,7 +8,7 @@
         <%= render 'layouts/error_messages', model: f.object %>
 
       <div class="mt-2">
-        <%= f.label :"名前" %><br />
+        <%= f.label :"名前(10文字まで)" %><br />
         <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
       </div>
 

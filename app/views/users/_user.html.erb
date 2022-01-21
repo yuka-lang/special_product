@@ -1,8 +1,8 @@
 　<p><%= attachment_image_tag user, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %></p>
   <p><%= user.name %></p>
   <p><%= simple_format(user.introduction) %></p>
-  <p>フォロー: <%= user.followings.count %></p>
-  <p>フォロワー: <%= user.followers.count %></p>
+  <p>フォロー:<%= link_to user.followings.count, user_followings_path(user.id) %>
+     フォロワー:<%= link_to user.followers.count, user_followers_path(user.id) %></p>
   <% if user.id == current_user.id %>
     <p><botton><%= link_to "プロフィール編集", edit_user_path(user), class: "btn btn-outline-primary fas fa-cog" %></botton></p>
     <p><i class="fas fa-bookmark"></i><%= link_to " ブックマーク一覧", bookmarks_posts_path %></p>
