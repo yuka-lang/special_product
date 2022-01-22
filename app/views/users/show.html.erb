@@ -4,6 +4,16 @@
     <div class = "col-md-3">
       <div class="border border-dark text-center pb-4">
         <%= render "users/user", user: @user %>
+
+    <!--通知機能-->
+    <% if unchecked_notifications.any? %>
+      <i class="fa fa-circle" style="color: gold;"></i>
+    <% end %>
+    <li>
+      <%= link_to "NOTICE", user_notifications_path(@user), class: "btn-default" %>
+    </li>
+
+
       </div>
     </div>
 

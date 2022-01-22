@@ -9,6 +9,8 @@ class FavoritesController < ApplicationController
     else
       redirect_to request.referer
     end
+    #通知機能を呼び出す
+    @post.create_notification_like!(current_user)
   end
 
   def destroy
