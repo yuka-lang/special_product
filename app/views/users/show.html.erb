@@ -2,18 +2,8 @@
    <p class="text-success pl-5"></p>
   <div class= "row px-4">
     <div class = "col-md-3">
-      <div class="border border-dark text-center pb-4">
+      <div class="border border-dark text-center p-2">
         <%= render "users/user", user: @user %>
-
-    <!--通知機能-->
-    <% if unchecked_notifications.any? %>
-      <i class="fa fa-circle" style="color: gold;"></i>
-    <% end %>
-    <li>
-      <%= link_to "NOTICE", user_notifications_path(@user), class: "btn-default" %>
-    </li>
-
-
       </div>
     </div>
 
@@ -21,7 +11,6 @@
        <botton><p class="text-right"><%= link_to "新規投稿", new_post_path(@user),class: "btn btn-outline-success fas fa-plus" %></p></botton>
       <h4 class="border-bottom"><span class="p-4"><%= @user.name %>さんの投稿</span></h4>
       <div class="row text-center pt-4">
-          <!--投稿一覧を表示-->
           <% @posts.each do |post| %>
             <div class="col-md-6">
               <div class="img_wrap">

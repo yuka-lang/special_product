@@ -1,7 +1,6 @@
 class RelationshipsController < ApplicationController
 
-  # フォローするとき
-  #通知の作成
+  # フォローし、通知を送る
   def create
     current_user.follow(params[:user_id])
     @user = User.find(params[:user_id])

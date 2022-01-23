@@ -2,12 +2,12 @@
   <div class="text-body border border-secondary py-3">
     <h5><i class="fas fa-tag text-success"></i>人気のタグはこちら</br>~top5~</h5>
         <% tag_lists.each do |list| %>
-            <% if list.count != 0 %>
-              <button class=" border border-secondary ml-2 mt-1 text-dark" disabled>
-                <%=link_to list.tag.name, search_tag_path(tag_id: list.tag.id) %>
-                <%="(#{list.count})" %></botton>
-            <% end %>
+          <% if list.count != 0 %>
+            <button class=" border border-secondary ml-2 mt-1 text-dark" disabled>
+              <%=link_to list.tag.name, search_tag_path(tag_id: list.tag.id) %>
+              <%="(#{list.count})" %></botton>
           <% end %>
+        <% end %>
   </div>
 
     <div>
@@ -19,17 +19,14 @@
         <%= link_to post_path(post.id) do %>
           <%= attachment_image_tag post, :image, :fill, 220, 160, format: 'jpeg', fallback: "no_image.jpg" %>
         </div>
-      <p class="card-title text-body"><%= post.title %></p>
+      <p class="card-title text-body"><%= post.title.truncate(30) %></p>
         <% end %>
-      <!--いいねカウント数-->
       <span class="ml-5"><i class="fas fa-heart text-danger"></i>️️<%= post.favorites.count %></span>
-      <!--投稿一覧画面で投稿に紐づくタグを表示-->
       <i class="fas fa-tag text-success pb-3"></i>
         <% post.tags.each do |tag| %>
           <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>
           <%="(#{tag.posts.count})" %>
         <% end %>
-
         <% if user_signed_in? %>
           <p><%= link_to post.comments.count, post_path(post.id) %>コメント</p>
         <% end %>
@@ -37,7 +34,7 @@
     </div>
     </br>
     <div>
-      <h4 class="font-weight-bold"><i class="fas fa-crown text-warning"></i> 今週の人気投稿</br>ランキング</h4>
+      <h5 class="font-weight-bold"><i class="fas fa-crown text-warning"></i> 今週の人気ランキング</h5>
         <!--ランキングと順位(1位から順に)一覧を表示する-->
         <% week_post_favorite_ranks.each.with_index(1) do |post, i| %>
         <p>第<%= i %>位</p>
@@ -45,17 +42,14 @@
         <%= link_to post_path(post.id) do %>
           <%= attachment_image_tag post, :image, :fill, 220, 160, format: 'jpeg', fallback: "no_image.jpg" %>
         </div>
-      <p class="card-title text-body"><%= post.title %></p>
+      <p class="card-title text-body"><%= post.title.truncate(30) %></p>
         <% end %>
-      <!--いいねカウント数-->
       <span class="ml-5"><i class="fas fa-heart text-danger"></i>️️<%= post.favorites.count %></span>
-      <!--投稿一覧画面で投稿に紐づくタグを表示-->
       <i class="fas fa-tag text-success pb-3"></i>
         <% post.tags.each do |tag| %>
           <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>
           <%="(#{tag.posts.count})" %>
         <% end %>
-
         <% if user_signed_in? %>
           <p><%= link_to post.comments.count, post_path(post.id) %>コメント</p>
         <% end %>

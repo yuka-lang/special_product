@@ -24,9 +24,7 @@
             <% @posts.each do |post| %>
               <div class="p-3 mx-auto">
                 <div class="card p-4 " style="width: 18rem;">
-                    <!--いいねカウント数-->
                   <span class="text-right"><i class="fas fa-heart text-danger"></i>️️<%= post.favorites.count %></span>
-
                   <p class="card-img-top">
                   <div class="img_side">
                     <%= link_to post_path(post.id) do %>
@@ -42,7 +40,6 @@
                       <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>
                       <%="(#{tag.posts.count})" %>
                     <% end %></i>
-
                     <% if user_signed_in? %>
                       <p><%= link_to post.comments.count, post_path(post.id) %>コメント</p>
                     <% end %>

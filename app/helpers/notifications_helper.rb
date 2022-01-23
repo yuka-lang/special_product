@@ -2,7 +2,6 @@ module NotificationsHelper
   
     def notification_form(notification)
       @visiter = notification.visiter
-      #notification.actionがfollowかlikeか
       case notification.action
         when "follow" then
           tag.a(notification.visiter.name, href:user_path(@visiter))+"さんがあなたをフォローしました"
