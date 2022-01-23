@@ -5,12 +5,12 @@ class FavoritesController < ApplicationController
     @post = Post.find(params[:post_id])
     @favorite = current_user.favorites.new(post_id: @post.id)
     if @favorite.save
-    # 非同期通信を適用
+      #通知機能を呼び出す
+      @post.create_notification_by(current_user)
+     # 非同期通信を適用
     else
       redirect_to request.referer
     end
-    #通知機能を呼び出す
-    @post.create_notification_like!(current_user)
   end
 
   def destroy

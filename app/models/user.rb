@@ -30,8 +30,9 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
   
-  # 通知モデルとの紐付け
+  #自分からの通知
   has_many :active_notifications, class_name: "Notification", foreign_key: "visiter_id", dependent: :destroy
+  #相手からの通知
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   # プロフィール画像投稿用
@@ -54,7 +55,8 @@ class User < ApplicationRecord
   
   # フォローの通知
   def create_notification_follow!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    # レコードの存在をチェック
+    temp = Notification.where(["visiter_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
     if temp.blank?
       notification = current_user.active_notifications.new(
         visited_id: id,
