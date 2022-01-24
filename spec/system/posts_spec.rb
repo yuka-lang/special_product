@@ -47,6 +47,18 @@ describe '投稿のテスト' do
         expect(page).to have_content @post.title
       end
     end
+
+    context 'ヘッダーの表示の確認' do
+      it 'マイページのリンクが存在しているか' do
+        expect(page).to have_link 'マイページ'
+      end
+      it 'トップページのリンクが存在しているか' do
+        expect(page).to have_link 'TOP'
+      end
+      it '会員一覧のリンクが存在しているか' do
+        expect(page).to have_link '会員一覧'
+      end
+    end
   end
 
   describe "詳細画面のテスト" do

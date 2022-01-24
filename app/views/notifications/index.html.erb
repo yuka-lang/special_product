@@ -1,11 +1,11 @@
 <h4 class="text-center">〜 <i class="fas fa-heart text-danger"></i>︎とフォローの通知 〜</h4>
-  <div class="text-center">
+  <div class="notification">
     <% if @notifications.exists? %>
-      <div class="p-4">
+      <p class="p-4">
         <%= render @notifications %>
-      </div>
+      </p>
     <% else %>
-      <p>通知はありません</p>
+      <div>通知はありません</div>
     <% end %>
     <%= link_to user_notifications_path, method: :delete do %>
       <i class="fas fa-trash" style="color: black;"></i>
