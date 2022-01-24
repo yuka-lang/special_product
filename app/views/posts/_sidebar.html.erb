@@ -14,23 +14,23 @@
       <h5 class="font-weight-bold pt-3">今月のおすすめ投稿</h5>
         <!--コメントの多い順位(1位から順に)一覧を表示する-->
         <% month_post_comment_ranks.each.with_index(1) do |post, i| %>
-        <p>第<%= i %>位</p>
+        <p class="pt-3">~ 第<%= i %>位 ~</p>
         <div class="img_side">
         <%= link_to post_path(post.id) do %>
           <%= attachment_image_tag post, :image, :fill, 220, 160, format: 'jpeg', fallback: "no_image.jpg" %>
         </div>
-      <p class="card-title text-body">
-        <%= post.title.truncate(30) %><span class="ml-2"><i class="fas fa-heart text-danger"></i>️️<%= post.favorites.count %></span>
-      </p>
+        <p class="card-title text-body">
+          <%= post.title.truncate(30) %><span class="ml-2"><i class="fas fa-heart text-danger"></i>️️<%= post.favorites.count %></span>
+        </p>
         <% end %>
-      <p><i class="fas fa-tag text-success pb-3"></i>
-        <% post.tags.each do |tag| %>
-          <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>
-          <%="(#{tag.posts.count})" %>
-        <% end %>
-      </p>
+        <i class="fas fa-tag text-success pb-3"></i>
+          <% post.tags.each do |tag| %>
+            <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>
+            <%="(#{tag.posts.count})" %>
+          <% end %>
+        <br />
         <% if user_signed_in? %>
-          <p><%= link_to post.comments.count, post_path(post.id) %>コメント</p>
+          <%= link_to post.comments.count, post_path(post.id) %>コメント
         <% end %>
       <% end %>
     </div>
@@ -38,24 +38,24 @@
     <div>
       <h5 class="font-weight-bold"><i class="fas fa-crown text-warning"></i> 今週の人気ランキング</h5>
         <!--ランキングと順位(1位から順に)一覧を表示する-->
-        <% week_post_favorite_ranks.each.with_index(1) do |post, i| %>
-        <p>第<%= i %>位</p>
+      <% week_post_favorite_ranks.each.with_index(1) do |post, i| %>
+        <p class="pt-3">~ 第<%= i %>位 ~</p>
         <div class="img_side">
         <%= link_to post_path(post.id) do %>
           <%= attachment_image_tag post, :image, :fill, 220, 160, format: 'jpeg', fallback: "no_image.jpg" %>
         </div>
-      <p class="card-title text-body">
-        <%= post.title.truncate(30) %><span class="ml-2"><i class="fas fa-heart text-danger"></i>️️<%= post.favorites.count %></span>
-      </p>
-        <% end %>
-      <p><i class="fas fa-tag text-success pb-3"></i>
-        <% post.tags.each do |tag| %>
-          <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>
-          <%="(#{tag.posts.count})" %>
-        <% end %>
-      </p>
+        <p class="card-title text-body">
+          <%= post.title.truncate(30) %><span class="ml-2"><i class="fas fa-heart text-danger"></i>️️<%= post.favorites.count %></span>
+        </p>
+          <% end %>
+        <i class="fas fa-tag text-success pb-3"></i>
+          <% post.tags.each do |tag| %>
+            <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>
+            <%="(#{tag.posts.count})" %>
+          <% end %>
+        <br />
         <% if user_signed_in? %>
-          <p><%= link_to post.comments.count, post_path(post.id) %>コメント</p>
+          <%= link_to post.comments.count, post_path(post.id) %>コメント
         <% end %>
       <% end %>
     </div>

@@ -1,13 +1,13 @@
 <div class= "container">
    <p class="text-success pl-5"></p>
   <div class= "row px-4">
-    <div class = "col-md-3">
-      <div class="border border-dark text-center pb-4">
+    <div class = "col-md-4">
+      <div class="border border-dark text-center pb-4 m-4">
         <%= render "users/user", user: @user %>
       </div>
     </div>
 
-    <div class="col-md-9 text-center">
+    <div class="col-md-8 text-center">
       <h5 class="text-left"><i class="fas fa-user"></i> <%= @user.name %>さんのフォロワー会員</h5>
         <table class="table">
           <thead>

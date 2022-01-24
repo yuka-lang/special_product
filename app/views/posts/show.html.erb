@@ -5,9 +5,9 @@
       <div class="row">
          <div class="text-success"></div>
         <div class="col-md-12 mx-auto p-3 text-center">
-            <!--タグの表示-->
+          <!--タグの表示-->
           <% @post_tags.each do |tag| %>
-              <%= link_to tag.name,search_tag_path(tag_id: tag.id)%><%="(#{tag.posts.count})" %>
+            <%= link_to tag.name,search_tag_path(tag_id: tag.id)%><%="(#{tag.posts.count})" %>
           <% end %>
           <p>タイトル</p>
           <h3 class="mb-4 border-bottom"><%= simple_format(@post.title) %></h3>　<!--改行を反映-->
@@ -67,10 +67,9 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3 text-center col-sm-1">
+    <div class="col-md-3 text-center col-sm-1 pt-5">
       <div class="text-body border border-secondary py-3">
         <h5><i class="fas fa-tag text-success"></i>人気のタグはこちら</br>~top5~</h5>
-        <!--タグ一覧-->
         <% @tag_lists.each do |list| %>
             <% if list.count != 0 %>
               <button class=" border border-secondary ml-2 mt-1 text-dark" disabled>
