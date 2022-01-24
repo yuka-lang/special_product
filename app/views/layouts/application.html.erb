@@ -13,7 +13,7 @@
     <header>
       <%= render "layouts/header" %>
     </header>
-    
+
     <% flash.each do |key, value| %>
       <%= content_tag(:div, value, class: "#{key}") %>
     <% end %>
@@ -25,5 +25,6 @@
         <p class="my-5">Copyright © 2022 localfood All rights reserved.</div>
       </p>
     </footer>
+    
  </body>
 </html>

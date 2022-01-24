@@ -23,7 +23,7 @@
           <div class="row pb-3">
             <% @posts.each do |post| %>
               <div class="p-3 mx-auto">
-                <div class="card p-4 " style="width: 18rem;">
+                <div class="card px-4 py-3 " style="width: 18rem;">
                   <span class="text-right"><i class="fas fa-heart text-danger"></i>️️<%= post.favorites.count %></span>
                   <p class="card-img-top">
                   <div class="img_side">
@@ -52,9 +52,16 @@
           <h3 class="pt-3">投稿が見つかりません...</h3>
         <% end %>
       </div>
+
       <div class="col-md-3 py-5">
-          <!--タグ一覧表示-->
-          <%= render "posts/sidebar", tag_lists: @tag_lists, week_post_favorite_ranks: @week_post_favorite_ranks, month_post_comment_ranks: @month_post_comment_ranks %>
+        <%= render "posts/sidebar", tag_lists: @tag_lists, week_post_favorite_ranks: @week_post_favorite_ranks, month_post_comment_ranks: @month_post_comment_ranks %>
       </div>
     </div>
   </div>
+
+  <!-- ページトップへ戻るボタン -->
+  <p class="pagetop" style="display: block;">
+    <a href="#">
+      <i class="fas fa-chevron-up"></i>
+    </a>
+  </p>

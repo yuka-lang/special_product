@@ -72,7 +72,6 @@ document.addEventListener("turbolinks:load", function() {
   });
 })
 
-
 // ファイル選択時の画像表示(会員編集)
 document.addEventListener("turbolinks:load", function() {
   $(function(){
@@ -84,5 +83,17 @@ document.addEventListener("turbolinks:load", function() {
       reader.readAsDataURL(e.target.files[0]); //取得したurlにアップロード画像のurlを挿入
   });
   });
+})
+
+// ページをトップへ戻る
+document.addEventListener("turbolinks:load", function() {
+$(window).scroll(function () {
+  var now = $(window).scrollTop();
+  if (now > 200) {
+    $('.pagetop').fadeIn("slow");
+  } else {
+    $('.pagetop').fadeOut("slow");
+  }
+});
 })
 
