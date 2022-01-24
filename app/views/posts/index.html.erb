@@ -20,7 +20,7 @@
       </div>
       <h4 class="pt-5 border-bottom">投稿一覧</h4>
         <% if @posts.present? %>
-          <div class="row">
+          <div class="row pb-3">
             <% @posts.each do |post| %>
               <div class="p-3 mx-auto">
                 <div class="card p-4 " style="width: 18rem;">
@@ -52,7 +52,7 @@
           <h3 class="pt-3">投稿が見つかりません...</h3>
         <% end %>
       </div>
-      <div class="col-3 py-5">
+      <div class="col-md3 py-5">
           <!--タグ一覧表示-->
           <%= render "posts/sidebar", tag_lists: @tag_lists, week_post_favorite_ranks: @week_post_favorite_ranks, month_post_comment_ranks: @month_post_comment_ranks %>
       </div>
