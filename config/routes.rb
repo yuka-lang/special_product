@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'posts#index'
 
+  # ゲストログイン
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
+
   # 検索機能のルーティング
   get 'search_tag/:tag_id' => 'posts#search_tag', as: 'search_tag'
   # DM機能のルーティング

@@ -68,10 +68,10 @@ class Post < ApplicationRecord
   #通知機能（いいね）
   def create_notification_by(current_user)
     notification = current_user.active_notifications.new(
-          post_id: id,
-          visited_id: user_id,
-          action: "favorite"
-        )
+      post_id: id,
+      visited_id: user_id,
+      action: "favorite"
+    )
     notification.save if notification.valid?
   end
   

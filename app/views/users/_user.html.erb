@@ -4,15 +4,17 @@
   <p>フォロー:<%= link_to user.followings.count, user_followings_path(user.id) %>
      フォロワー:<%= link_to user.followers.count, user_followers_path(user.id) %></p>
   <% if user.id == current_user.id %>
-     <!--通知機能-->
-    <p><i class="far fa-bell"></i>
-    <% if unchecked_notifications.any? %>
-      <i class="fa fa-circle" style="color: gold;"></i>
+       <!--通知機能-->
+      <p><i class="far fa-bell"></i>
+      <% if unchecked_notifications.any? %>
+        <i class="fa fa-circle" style="color: gold;"></i>
+      <% end %>
+      <%= link_to " 通知", user_notifications_path(@user), class: "btn-default" %></p>
+      <p><i class="fas fa-bookmark"></i><%= link_to " ブックマーク一覧", bookmarks_posts_path %></p>
+    <% if !(user.name == "guestuser") %>
+      <p><botton><%= link_to "プロフィール編集", edit_user_path(user), class: "btn btn-outline-primary fas fa-cog" %></botton></p>
     <% end %>
-    <%= link_to " 通知", user_notifications_path(@user), class: "btn-default" %></p>
-    <p><i class="fas fa-bookmark"></i><%= link_to " ブックマーク一覧", bookmarks_posts_path %></p>
-    <p><botton><%= link_to "プロフィール編集", edit_user_path(user), class: "btn btn-outline-primary fas fa-cog" %></botton></p>
-    <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
+      <p><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></p>
   <% else %>
     <!--フォロー,フォロワー機能-->
     <% if current_user.following?(user) %>
