@@ -10,6 +10,7 @@
     <div class="col-md-8">
        <botton><p class="text-right"><%= link_to "新規投稿", new_post_path(@user),class: "btn btn-outline-success fas fa-plus" %></p></botton>
       <h4 class="border-bottom"><span class="p-4"><%= @user.name %>さんの投稿</span></h4>
+      <% if @posts.present? %>
       <div class="row text-center pt-4">
           <% @posts.each do |post| %>
             <div class="col-md-6">
@@ -22,6 +23,9 @@
             </div>
           <% end %>
       </div>
+      <% else %>
+        <h5 class="pt-4 text-center">まだ投稿がありません <i class="far fa-smile"></i></h5>
+      <% end %>
     </div>
   </div>
 </div>
