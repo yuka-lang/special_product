@@ -47,7 +47,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = @post.comments.all
-    @post_tags = @post.tags
+    @post_tags = @post.tags.uniq
     @user = current_user
   end
 
