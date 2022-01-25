@@ -33,19 +33,19 @@
 
 // スライドショーの画像
 	.image1 {
-  background-image: url(top.jpg);
+  background-image: image-url("top.jpg");
 	}
 	.image2 {
-	  background-image: url(top9.jpg);
+	  background-image: image-url("top9.jpg");
 	}
 	.image3 {
-	  background-image: url(top11.jpg);
+	  background-image: image-url("top11.jpg");
 	}
 	.image4 {
-	  background-image: url(top23.jpg);
+	  background-image: image-url("top23.jpg");
 	}
 	.image5 {
-	  background-image: url(top24.jpg);
+	  background-image: image-url("top24.jpg");
 	}
 
 	#container{
