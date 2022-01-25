@@ -9,6 +9,7 @@
 
     <div class="col-md-8 text-center">
       <h5 class="text-left"><i class="fas fa-user"></i> <%= @user.name %>さんのフォロワー会員</h5>
+      <% if @users.present? %>
         <table class="table">
           <thead>
             <tr class="border-bottom">
@@ -29,6 +30,9 @@
               <% end %>
           </tbody>
         </table>
+      <% else %>
+        <h5 class="pt-4">フォロワーはいません <i class="far fa-smile"></i></h5>
+      <% end %>
     </div>
   </div>
 </div>
